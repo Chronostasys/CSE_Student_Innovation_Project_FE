@@ -1,13 +1,833 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+a{
+  text-decoration: none;
+}
+*{
+  margin:0;
+  padding:0;
+}
+@media screen and (max-width: 1200px) {
+  html .loadBoxAll{
+    left:665px;
+  }
+}
+body {	
+	color:#2D2D2D;
+  background: #FFFFFF;
+  overflow-x: hidden;
+}
+html, body {
+  height:100%;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.loadHeaderLogo {
+  background-image: url(./images/logo_01.png);
+  background-size: contain;
+  position: absolute;
+  height: 124px;
+  width: 430px;
+  left: 265px;
+  top: 201px;
+  z-index: 2;
 }
+.wanganLogo {
+  background-image: url(./images/wangan_loge.png);
+  background-size: contain;
+  position: absolute;
+  height: 50px;
+  width: 282px;
+  left: 43%;
+  top: 644px;
+  z-index: 3;
+}
+
+/*************************form box*****************************/
+.loadBoxAll{
+  position: absolute;
+  height: 372px;
+  width: 425px;
+  right: 110px;
+  top: 193px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  box-shadow: 0px 5px 6px -3px rgba(0, 0, 0, 0.2), 0px 9px 12px 1px rgba(0, 0, 0, 0.14), 0px 3px 16px 2px rgba(0, 0, 0, 0.12);
+  border-radius: 9px;
+  background-color: white;
+}
+.loadBoxHeader{
+  position: absolute;
+  height: 30px;
+  left: 56px;
+  top: 50px;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 30px;
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: #2D2D2D;
+}
+
+#forgeKeywordLink{
+  position: absolute;
+  height: 17px;
+  width: 57px;
+  left: 110px;
+  top: 307px;
+  font-family: Microsoft YaHei UI;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  color: #828282;
+}
+#registerLink{
+  position: absolute;
+  height: 17px;
+  width: 57px;
+  left: 174px;
+  top: 307px;
+  border-radius: nullpx;
+  font-family: Microsoft YaHei UI;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  color: #828282;
+}
+#forgeKeywordLink:hover,#registerLink:hover{
+  text-decoration: underline;
+  color: #6E99CB;
+}
+#TextFieldLoadEmail {
+  position: absolute;
+  height: 48px;
+  width: 220px;
+  left: 56px;
+  top: 101px;  
+}
+#TextFieldLoadKeyword {
+  position: absolute;
+  height: 48px;
+  width: 250px;
+  left: 56px;
+  top: 170px;  
+}
+
+/*************************background*****************************/
+.loadbackLine11{
+  position: absolute;
+  height: 28px;
+  width: 460px;
+  left: -205px;
+  top: 301px;
+  background: #FFAE12;
+}
+.loadbackLine12{
+  position: absolute;
+  height: 28px;
+  width: 784px;
+  left: -122px;
+  top: 349px;
+  background: rgba(255, 174, 18, 0.7);
+}
+.loadbackLine13{
+  position: absolute;
+  height: 28px;
+  width: 600px;
+  left: -198px;
+  top: 397px;
+  background: rgba(255, 174, 18, 0.3);
+}
+.loadbackLine14{
+  position: absolute;
+  height: 28px;
+  width: 600px;
+  left: -275px;
+  top: 445px;
+  border-radius: 0px;
+  background: rgba(255, 174, 18, 0.12);
+}
+.loadbackLine21{
+  position: absolute;
+  height: 28px;
+  width: 1089px;
+  left: 543px;
+  top: 398px;
+  border-radius: 0px;
+  background: rgba(92, 132, 210, 0.5);
+  z-index: -1;
+
+}
+.loadbackLine22{
+  position: absolute;
+  height: 28px;
+  width: 1089px;
+  left: 487px;
+  top: 445px;
+  border-radius: 0px;
+  background: #5C84D2;
+  z-index: -1;
+}
+
+/****************************forge Keyword*******************************/
+
+/*******************forge Keyword Box1**********************/
+#BackKeywordBox1{
+  position: absolute;
+  width: 425px;
+  height: 228px;
+  left: calc(50% - 425px/2 + 17.5px);
+  top: calc(60% - 228px/2 - 122px);
+  background: #FFFFFF;
+  box-shadow: 0px 5px 6px -3px rgba(0, 0, 0, 0.2), 0px 9px 12px 1px rgba(0, 0, 0, 0.14), 0px 3px 16px 2px rgba(0, 0, 0, 0.12);
+  border-radius: 9px;
+}
+#BackKeywordBox1Header{
+  position: absolute;
+  height: 23px;
+  left: 32px;
+  top: 41px;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 23px;
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: #2D2D2D;
+}
+#BackKeywordBox1TextField{
+  position: absolute;
+  height: 24px;
+  width: 220px;
+  left: 41px;
+  top: 82px;
+}
+#BackKeywordBox1Button{
+  position: absolute;
+  height: 36px;
+  width: 100px;
+  left: 302px;
+  top: 169px;
+  border-radius: 4px;
+  padding: 6px, 16px, 6px, 16px;
+  background: #E0E0E0;
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight:500;
+  line-height: 24px;
+  letter-spacing: 0.4000000059604645px;
+  text-align: left;
+  color: #000000;
+  z-index: 5;
+}
+
+/*******************forge Keyword Box2**********************/
+.BackKeywordBox2getVerificationCodeLinkT {
+  position: absolute;
+  height: 15px;
+  left: 193px;
+  top: 186px;
+  font-family: Microsoft YaHei UI;
+  font-size: 12.5px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  color: #6E99CB;
+}
+.BackKeywordBox2getVerificationCodeLinkF {
+  position: absolute;
+  height: 15px;
+  left: 197px;
+  top: 186px;
+  font-family: Microsoft YaHei UI;
+  font-size: 12.5px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  color: #918F8F;
+}
+
+.BackKeywordBox2getVerificationCodeLinkT:hover{
+  text-decoration: underline;
+}
+
+/*******************forge Keyword Box3**********************/
+#BackKeywordBox3{
+  position: absolute;
+  width: 425px;
+  height: 328px;
+  left: calc(50% - 425px/2 + 17.5px);
+  top: calc(60% - 228px/2 - 122px);
+  background: #FFFFFF;
+  box-shadow: 0px 5px 6px -3px rgba(0, 0, 0, 0.2), 0px 9px 12px 1px rgba(0, 0, 0, 0.14), 0px 3px 16px 2px rgba(0, 0, 0, 0.12);
+  border-radius: 9px;
+}
+#BackKeywordBox3Header{
+  position: absolute;
+  height: 23px;
+  left: 32px;
+  top: 41px;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 23px;
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: #2D2D2D;
+}
+#BackKeywordBox3TextField1{
+  position: absolute;
+  height: 34.5px;
+  width: 220px;
+  left: 41px;
+  top: 108px;
+}
+#BackKeywordBox3TextField2{
+  position: absolute;
+  height: 34.5px;
+  width: 220px;
+  left: 41px;
+  top: 171px;
+}
+#BackKeywordBox3Button{
+  position: absolute;
+  height: 36px;
+  width: 61px;
+  left: 330px;
+  top: 261px;
+  border-radius: 4px;
+  padding: 6px, 16px, 6px, 16px;
+  background: #E0E0E0;
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight:500;
+  line-height: 24px;
+  letter-spacing: 0.4000000059604645px;
+  text-align: left;
+  color: #000000;
+  z-index: 5;
+}
+
+/**************************** RegisterBox *******************************/
+
+#RegisterBox{
+  position: absolute;
+  width: 540px;
+  height: 600px;
+  left: calc(50% - 540px/2 - 0.5px);
+  top: calc(50% - 600px/2 - 35.5px);
+  background: #FFFFFF;
+  box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.2), 0px 9px 12px rgba(0, 0, 0, 0.14), 0px 3px 16px rgba(0, 0, 0, 0.12);
+  border-radius: 9px;
+}
+#RegisterBoxHeader{
+  position: absolute;
+  height: 23px;
+  width: 78px;
+  left: 59px;
+  top: 37px;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 23px;
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: #2D2D2D;
+}
+#RegisterBoxHeadText{
+  position: absolute;
+  width: 70px;
+  height: 17px;
+  left: 59px;
+  top: 69px;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 17px;
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: #828282;
+}
+#RegisterBoxLoadLink{
+  position: absolute;
+  width: 70px;
+  height: 17px;
+  left: 120px;
+  top: 69px;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13.5px;
+  line-height: 17px;
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: #6E99CB;
+}
+#RegisterBoxLoadLink:hover{
+  text-decoration: underline;
+}
+#RegisterBoxCloseLoadLink{
+  color: #828282;
+}
+#RegisterBoxCloseLoadLink:hover{
+  color: black;
+}
+#TextFieldRegisterBoxUserNameBox{
+  position: absolute;
+  height: 24px;
+  width: 220px;
+  left: 59px;
+  top: 116px;
+}
+#TextFieldRegisterBoxEmailBox{
+  position: absolute;
+  height: 24px;
+  width: 220px;
+  left: 59px;
+  top: 208px;
+}
+#TextFieldRegisterBoxVerificationCodeBox{
+  position: absolute;
+  height: 24px;
+  width: 220px;
+  left: 59px;
+  top: 297px;
+}
+#TextFieldRegisterBoxKeywordBox1{
+  position: absolute;
+  height: 24px;
+  width: 220px;
+  left: 59px;
+  top: 386px;
+}
+#TextFieldRegisterBoxKeywordBox2{
+  position: absolute;
+  height: 24px;
+  width: 220px;
+  left: 59px;
+  top: 475px;
+}
+#RegisterBoxButton{
+  position: absolute;
+  height: 36px;
+  width: 93px;
+  left: 410px;
+  top: 529px;
+  border-radius: 4px;
+  padding: 6px, 16px, 6px, 16px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14.5px;
+  line-height: 24px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.87);
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 10px 0px;
+}
+#RegisterBoxText1{
+  position: absolute;
+  height: 17px;
+  left: 318px;
+  top: 146px;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 17px;
+  letter-spacing: 0.05em;  
+  color: #918F8F;  
+}
+#RegisterBoxText2{
+  position: absolute;
+  height: 17px;
+  left: 318px;
+  top: 239px;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 17px;
+  letter-spacing: 0.05em;  
+  color: #918F8F;  
+}
+.RegistergetVerificationCodeLinkT{
+  position: absolute;
+  height: 17px;
+  left: 318px;
+  top: 327px;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 17px;
+  letter-spacing: 0.05em;
+  color: #6E99CB;
+}
+.RegistergetVerificationCodeLinkF{
+  position: absolute;
+  height: 17px;
+  left: 318px;
+  top: 327px;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 17px;
+  letter-spacing: 0.05em;
+  color: #918F8F;
+}
+.RegistergetVerificationCodeLinkT:hover{
+  text-decoration: underline;
+}
+
+/****************************Home*******************************/
+.HomeHeaderLogo{
+  background-image: url(./images/logow-02-02.png);
+  background-size: contain;
+  position: absolute;
+  height: 42px;
+  width: 152px;
+  left: 24px;
+  top: 12px;
+  z-index: 3000;
+}
+.HomePageFrontName{
+  position: absolute;
+  width: 130px;
+  right: calc(27% - 350px);
+  top: 24px;
+  text-align: center;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color: #FFFFFF;
+  z-index: 5;
+}
+#HomePageFrontNameImage{
+  position: absolute;
+  right: calc(27% - 200px);
+  top: 21px;
+}
+.HomePageFrontNameHiddenBox{
+  position: absolute;
+  width: 133px;
+  height: 50px;
+  right: calc(27% - 350px);
+  top: 58px;
+  background: #FFFFFF;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+}
+#HomePageFrontNameHiddenBoxExit{
+  position: absolute;
+  height: 22px;
+  width: 57px;
+  left: 40px;
+  top: 15px;
+  text-align: center;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color: #FF737F;
+}
+#HomePageFrontNameHiddenBoxExit:hover{
+  text-decoration-line: underline;
+}
+
+
+
+/***********************FirstPage***********************/
+.FirstPageUnLoadBox{
+  position: absolute;
+  width: 365px;
+  height: 207px;
+  left: calc(10% + 850px);
+  top: 103px;
+  background: #FFFFFF;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+}
+#FirstPageUnLoadBoxText{
+  position: absolute;
+  left: 129px;
+  top: 91px;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color: #626262;
+}
+#FirstPageUnLoadBoxLoadLink{
+  position: absolute;
+  left: 114px;
+  top: 143px;
+  font-family: Microsoft YaHei UI;
+  font-size: 14px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color: #B9B9B9;
+}
+#FirstPageUnLoadBoxRegisterLink{
+  position: absolute;
+  left: 207px;
+  top: 143px;
+  font-family: Microsoft YaHei UI;
+  font-size: 14px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color: #B9B9B9;
+}
+#FirstPageUnLoadBoxLoadLink:hover,#FirstPageUnLoadBoxRegisterLink:hover{
+  text-decoration: underline;
+  color: #263B64;
+}
+.FirstPageUserBox{
+  position: fixed;
+  width: 365px;
+  height: 100px;
+  left: calc(10% + 850px);
+  top: 103px;
+  background: #FFFFFF;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+}
+
+#FirstPageUserBoxName{
+  width: 100px;
+  position: absolute;
+  left: 132px;
+  top: 30px;
+  text-align: center;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color:#2D2D2D;
+}
+.MessageBox{
+  margin: 0 0 16px 0;
+  padding: 26px 32px;
+  height: 80px;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+}
+.MessageBoxHeader{
+  height: 22px;
+  width: 339px;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color: #263B64;
+}
+.MessageBoxMainText{
+  position: relative;
+  top: 18px;
+  height: 40px;
+  width: 388px;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color: #626262;
+}
+.MessageBoxTopDot{
+  position: relative;
+  bottom: 72px;
+  left: 792px;
+  height: 13px;
+  width: 13px;
+  border-radius: 9px;
+  background: #FFAE12;
+}
+.MessageBoxTime{
+  float: right;
+  position: relative;
+  bottom: 35px;
+  left: 13px;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color: #B9B9B9;
+}
+.MessageBoxPoster{
+  float: right;
+  position: relative;
+  bottom: 5px;
+  left: 133px;
+  width: 190px;
+}
+.MessageBoxName{
+  float: left;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color: #626262;
+}
+.MessageBoxCompanyName{
+  float: right;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color: #626262;
+}
+
+/****************************posting*******************************/
+.HomePageWriterBox{
+  position: fixed;
+  width: 365px;
+  height: 100px;
+  left: calc(10% + 830px);
+  top: 123px;
+  background: #FFFFFF;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+}
+#HomePageWriterBoxName{
+  width: 100px;
+  position: absolute;
+  left: 132px;
+  top: 30px;
+  text-align: center;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color:#2D2D2D;
+}
+.HomePagePostingHeader{
+  margin: 8px 1px;
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid #E0E0E0;
+}
+.HomePagePostingHeaderText{
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color: #263B64;
+}
+.HomePagePostingHeaderTime{
+  margin: 12px 0 0 0;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color: #B9B9B9;
+}
+.HomePagePostingText{
+  margin: 38px 1px;
+  padding: 0 0 48px 0;
+  border-bottom: 1px solid #E0E0E0;
+}
+.HomePagePostingTextContent{
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 200%;
+  letter-spacing: 0.1px;
+  color: #626262;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 0px;
+}
+  
+
+
+/****************************forge Keyword Link*******************************
+export function BackKeywordBox1Button() {
+  const classes = useStyles();
+  return (
+    <div>
+      <Button id="BackKeywordBox1Button"
+        variant="contained"
+        color="primary"
+        className={classes.button}
+        endIcon={<ArrowForwardIcon />}
+      >
+        下一步
+      </Button>
+    </div>
+  );
+}
+
+class BackKeywordBox extends React.Component {
+  render() {
+    return (
+      <div id="BackKeywordBox1">
+        <div id="BackKeywordBox1Header">找回密码</div>
+        <div id="BackKeywordBox1TextField"><TextField label="注册邮箱" /></div>
+        <BackKeywordBox1Button />
+      </div>
+    );
+  }
+}
+
+
+export function SimpleBackdrop1() {
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const handleToggle = () => {
+    setOpen(!open);
+  };
+  
+    console.log(1);
+    handleToggle();
+    return (
+      <div>
+        <BackKeywordBox />
+      </div>
+    );
+  
+  
+}
+*/
