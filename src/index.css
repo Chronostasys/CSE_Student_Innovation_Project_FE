@@ -712,8 +712,23 @@ html, body {
   letter-spacing: 0.1px;
   color: #626262;
 }
-
-/****************************posting*******************************/
+.ToPostingBox{
+  position: absolute;
+  width: 180px;
+  height: 65px;
+  left: calc(10% + 850px);
+  top: 459px;
+}
+.ToPostingBoxText{
+  color:#626262;
+  font-weight:700;
+  font-size:14px;
+  letter-spacing:0.1px;
+  position:absolute;
+  left: 75px;
+  top: 23px;
+}
+/****************************the posting*******************************/
 .HomePageWriterBox{
   position: fixed;
   width: 365px;
@@ -765,7 +780,7 @@ html, body {
 .HomePagePostingText{
   margin: 38px 1px;
   padding: 0 0 48px 0;
-  border-bottom: 1px solid #E0E0E0;
+  /*border-bottom: 1px solid #E0E0E0;*/
 }
 .HomePagePostingTextContent{
   font-family: Microsoft YaHei UI;
@@ -780,9 +795,21 @@ html, body {
   flex-grow: 0;
   margin: 0px 0px;
 }
-  
 
 
+
+
+/**************************** My Posting *******************************/
+.MyPostingMainCloseIcon{
+  margin: 40px 8px;
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  background-color: #B9B9B9;
+}
+.MyPostingMainCloseIcon:hover{
+  background-color: #626262;
+}
 /****************************forge Keyword Link*******************************
 export function BackKeywordBox1Button() {
   const classes = useStyles();

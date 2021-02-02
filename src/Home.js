@@ -11,6 +11,8 @@ import Avatar from '@material-ui/core/Avatar';
 
 import './index.css';
 import FirstPage from './FirstPage';
+import MyPosting from './MyPosting';
+
 import { Link } from 'react-router-dom';
 import {
   BrowserRouter as Router,
@@ -166,10 +168,10 @@ export function SimpleTabs(props) {
         Item Three
       </TabPanel>
       <Switch>
-        <Route exact path="/Home/HomePage"><FirstPage /></Route>
+        <Route exact path="/Home/HomePage"></Route>
         <Route exact path="/Home/SchoolCompany">2</Route>
         <Route exact path="/Home/Projects">3</Route>
-        <Route exact exact path="/"></Route>
+        <Route exact path="/"></Route>
 
       </Switch>
 

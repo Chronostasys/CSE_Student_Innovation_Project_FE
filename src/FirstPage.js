@@ -6,7 +6,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import Pagination from '@material-ui/lab/Pagination';
 import FaceIcon from '@material-ui/icons/Face';
 import HomePagePosting from './HomeHomePagePosting';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+import EditIcon from '@material-ui/icons/Edit';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import NavigationIcon from '@material-ui/icons/Navigation';
 
+import MyPosting from './MyPosting';
 import './index.css';
 
 import {
@@ -44,15 +50,45 @@ export function BasicPagination() {
 
 export default function FirstPage() {
   return (
-    <div>
+    <div>      
       
-      
-            
       <Switch>
-        <Route path="/Home/HomePage/1" ><HomePagePosting/></Route>
-        <Route exact path="/Home/HomePage"><SimpleContainer /><FirstPageUserBox/></Route>
+        <Route exact path="/Home/HomePage/1" ><HomePagePosting/></Route>
+        <Route exact path="/Home/HomePage"><SimpleContainer/><FirstPageUnLoadBox/><ToPostingBox/></Route>
+        <Route exact path="/Home/HomePage/Posting"><MyPosting style={{padding:'0'}}/></Route>
         <Route exact path="/"></Route>      
       </Switch>
+    </div>
+  );
+}
+
+const useStylesPostingButton = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+    },
+  },
+  extendedIcon: {
+    marginRight: theme.spacing(1),
+  },
+}));
+
+export function FloatingActionButtons() {
+  const classes = useStylesPostingButton();
+  return (
+    <div className={classes.root}>
+      <Fab size="medium"  aria-label="add" style={{backgroundColor:"#263B64", color:"#fff"}}>
+        <AddIcon />
+      </Fab>
+    </div>
+  );
+}
+
+export function ToPostingBox() {
+  return (
+    <div className="ToPostingBox">
+      <Link to="/Home/HomePage/Posting"><FloatingActionButtons/></Link>
+      <Link to="/Home/HomePage/Posting" className="ToPostingBoxText">我要发帖</Link>
     </div>
   );
 }
@@ -86,7 +122,7 @@ export function SimpleContainer() {
       <Container maxWidth="sm">
         <Typography style={{  height: '576px',width:'857px',position:'absolute', left:'calc(5% + 28px)',top:"103px"}} >
           <Link to="/Home/HomePage/1"><MessageBox/></Link>
-          <MessageBox/>
+          <Link to="/Home/HomePage/1"><MessageBox/></Link>
           <MessageBox/>
           <MessageBox/>
 

@@ -11,6 +11,7 @@ import Divider from '@material-ui/core/Divider';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
+import TextsmsIcon from '@material-ui/icons/Textsms';
 import './index.css';
 
 import {
@@ -48,7 +49,7 @@ const useStylesCommentList = makeStyles((theme) => ({
   }
 }));
 
-export function AlignItemsCommenList() {
+export function AlignItemsCommentList() {
   const classes = useStylesCommentList();
   return (
     <List className={classes.root}>
@@ -171,6 +172,7 @@ export default function Posting() {
     <div>
       <SimpleContainer />
       <HomePageWriterBox />
+      
     </div>
   );
 }
@@ -181,7 +183,8 @@ export function SimpleContainer() {
       <Container maxWidth="sm" style={{backgroundColor:'white'}}>
         <Typography style={{ width:'657px',position:'absolute', left:'calc(8% + 88px)',top:"103px",zIndex:"5000"}} >
         <HomePagePostingHeader/>
-        <AlignItemsCommenList/>
+        {/*<AlignItemsCommentList/>
+        <HomePagePostingMyCommentBox/>*/}
         </Typography>
       </Container>
     </React.Fragment>
@@ -223,16 +226,16 @@ export function HomePagePostingHeader() {
   </div>
   );
 }
-export function HomePagePostingContent() {
-  return (
-    <div>
-    </div>
-  );
-}
 
-export function HomePagePostingComment() {
+export function HomePagePostingMyCommentBox() {
   return (
     <div>
+      <div className="HomePagePostingMyCommentBoxHeader">
+        <div><TextsmsIcon/></div>
+      </div>
+      <div className="HomePagePostingMyCommentTextBox"></div>
+      <div className="HomePagePostingMyCommentBoxButton"></div>
+
     </div>
   );
 }
