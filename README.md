@@ -1,6 +1,6 @@
 应该是先clone，进入项目文件夹，执行
 
-`npm instart`
+`npm install`
 
 `npm start`
 
