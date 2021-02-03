@@ -28,24 +28,13 @@ import {
   useParams
 } from "react-router-dom";
 
-
-const useStyles = makeStyles((theme) => ({
+const PaginationControlleduseStyles = makeStyles((theme) => ({
   root: {
-    '& > *': {
+    '& > * + *': {
       marginTop: theme.spacing(2),
     },
   },
 }));
-
-export function BasicPagination() {
-  const classes = useStyles();
-  return (
-    <div className={classes.root}>
-      <Pagination count={10} />
-    </div>
-  );
-}
-
 
 
 export default function FirstPage() {
@@ -54,8 +43,12 @@ export default function FirstPage() {
       
       <Switch>
         <Route exact path="/Home/HomePage/1" ><HomePagePosting/></Route>
-        <Route exact path="/Home/HomePage"><SimpleContainer/><FirstPageUnLoadBox/><ToPostingBox/></Route>
-        <Route exact path="/Home/HomePage/Posting"><MyPosting style={{padding:'0'}}/></Route>
+        <Route exact path="/Home/HomePage">
+          <PaginationControlled/>
+          <FirstPageUnLoadBox/>
+          <ToPostingBox/>
+        </Route>
+        <Route path="/Home/HomePage/Posting"><MyPosting style={{padding:'0'}}/></Route>
         <Route exact path="/"></Route>      
       </Switch>
     </div>
@@ -129,10 +122,25 @@ export function SimpleContainer() {
         </Typography>
       </Container>
     </React.Fragment>
-    <div style={{position:'absolute', left:'616px',top:"675px"}}><BasicPagination/></div>
     </div>
   );
 }
+
+export function PaginationControlled() {
+  const classes = PaginationControlleduseStyles();
+  const [page, setPage] = React.useState(1);
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
+  return (
+    <div className={classes.root}>
+      <SimpleContainer/>
+      page:{page}
+      <div style={{position:'absolute', left:'616px',top:"675px"}}><Pagination count={10} page={page} onChange={handleChange} /></div>
+    </div>
+  );
+}
+
 
 
 export function MessageBox() {

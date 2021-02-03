@@ -15,6 +15,11 @@ import TextsmsIcon from '@material-ui/icons/Textsms';
 import TextField from '@material-ui/core/TextField';
 import CancelIcon from '@material-ui/icons/Cancel';
 import CloseIcon from '@material-ui/icons/Close';
+import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
+import Button from '@material-ui/core/Button';
+import SendIcon from '@material-ui/icons/Send';
+import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import './index.css';
 
 import {
@@ -30,30 +35,101 @@ import {
   useParams
 } from "react-router-dom";
 
+const ButtonuseStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+    },
+  },
+}));
 
 
-
-
-export default function MyPosting() {
+export function MyPostingMainCloseIcon(props) {
+  props.history.push("/Home/HomePage/Posting/Back");
+}
+export function MyPostingMainCloseBoxClose(props) {
+  props.history.push("/Home/HomePage");
+}
+export function MyPostingMainCloseBoxBack(props) {
+  props.history.push("/Home/HomePage/Posting");
+}
+export function MyPostingMainCloseBox(props) {
   return (
-    <div style={{margin:'-24px -24px',width:"calc(100% + 48px)", backgroundColor:"rgba(38, 59, 100, 0.16)",height:'1100px'}}>
-      <SimpleContainer/>
+    <div className="MyPostingMainCloseBox">
+      <div className="MyPostingMainCloseBoxSentimentVeryDissatisfiedIcon"><SentimentVeryDissatisfiedIcon/></div>
+      <div className="MyPostingMainCloseBoxText">您确定要放弃编辑吗？</div>
+      <div onClick={()=>MyPostingMainCloseBoxClose(props)} className="MyPostingMainCloseBoxCloseButtons"><MyPostingMainCloseBoxCloseButtons/></div>
+      <div onClick={()=>MyPostingMainCloseBoxBack(props)} className="MyPostingMainCloseBoxBackButtons"><MyPostingMainCloseBoxBackButtons/></div>
+    </div>
+  )
+}
+export function MyPostingMainCloseBoxCloseButtons() {
+  const classes = ButtonuseStyles();
+  return (
+    <div className={classes.root}>
+      <Button variant="contained">确认放弃</Button>
     </div>
   );
 }
-
-export function SimpleContainer() {
+export function MyPostingMainCloseBoxBackButtons() {
+  const classes = ButtonuseStyles();
   return (
+    <div className={classes.root}>
+      <Button variant="contained" color="primary">
+        我再想想
+      </Button>
+     </div>
+  );
+}
+
+
+export function MyPostingMainFinishBox(props) {
+  return (
+    <div className="MyPostingMainFinishBox">
+      <div className="MyPostingMainFinishBoxSentimentSatisfiedAltIcon"><SentimentSatisfiedAltIcon/></div>
+      <div className="MyPostingMainFinishBoxText">发布成功！</div>
+      <div onClick={()=>MyPostingMainFinishBoxFinish(props)} className="MyPostingMainFinishBoxFinishButtons"><MyPostingMainCloseBoxFinishButtons/></div>
+    </div>
+  )
+}
+export function MyPostingMainFinishIcon(props) {
+  props.history.push("/Home/HomePage/Posting/Finish");
+}
+export function MyPostingMainFinishBoxFinish(props) {
+  props.history.push("/Home/HomePage/1");
+}
+
+export function MyPostingMainCloseBoxFinishButtons() {
+  const classes = ButtonuseStyles();
+  return (
+    <div className={classes.root}>
+      <Button variant="contained" endIcon={<ArrowForwardIcon />}>查看帖子</Button>
+    </div>
+  );
+}
+export function SimpleContainer(props) {
+
+  return (
+    <div style={{margin:'-24px -24px',width:"calc(100% + 48px)", backgroundColor:"rgba(38, 59, 100, 0.16)",height:'1100px'}}>
+    <div style={{width:'800px',height:'65px',position:'absolute',zIndex:"5000",top:'0'}}></div>
     <React.Fragment>
       <CssBaseline />
       <Container maxWidth="sm">
         <Typography component="div" style={{backgroundColor:'#fff',height:'1040px',width:'809px',padding:'44px 59px 0 59px',position:'absolute',top:'86px',left:'calc(50% - 404px)'}} >
           <PostingMain/>
-          <div className="MyPostingMainCloseIcon" ><CloseIcon fontSize="large" style={{position:'relative',top:'4.5px',left:'5px',color: 'white'}}/></div>
-
+          <div className="MyPostingMainCloseIcon" onClick={()=>MyPostingMainCloseIcon(props)}><CloseIcon fontSize="small" style={{position:'relative',top:'12px',left:'12.5px',color: 'white'}}/></div>
+          <div className="MyPostingMainFinishIcon" onClick={()=>MyPostingMainFinishIcon(props)}><SendIcon fontSize="small" style={{position:'relative',top:'11.5px',left:'13.5px',color: 'white'}}/></div>
         </Typography>
       </Container>
     </React.Fragment>
+
+    <Switch>
+        <Route exact path="/Home/HomePage/Posting/Back">{MyPostingMainCloseBox(props)}</Route>
+        <Route exact path="/Home/HomePage/Posting/Finish">{MyPostingMainFinishBox(props)}</Route>
+        <Route exact path="/"></Route>      
+    </Switch>
+
+    </div>
   );
 }
 
@@ -62,7 +138,6 @@ export function PostingMain() {
     <div>
       <PostingContent/>
       <PostingFinishButton/>
-      
     </div>
   );
 }
@@ -133,3 +208,4 @@ export function PostingAbandonButton() {
 
 
 
+export default withRouter(SimpleContainer);

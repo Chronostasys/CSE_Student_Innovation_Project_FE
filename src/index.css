@@ -806,10 +806,109 @@ html, body {
   height: 45px;
   width: 45px;
   background-color: #B9B9B9;
+  filter: drop-shadow(0px 3px 4px rgba(0, 0, 0, 0.25));
 }
 .MyPostingMainCloseIcon:hover{
   background-color: #626262;
+  cursor:pointer;
 }
+.MyPostingMainFinishIcon{
+  position: absolute;
+  left: 699px;
+  bottom: 53px;
+  margin: 40px 8px;
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  background-color: #263B64;
+  filter: drop-shadow(0px 3px 4px rgba(0, 0, 0, 0.25));
+}
+.MyPostingMainFinishIcon:hover{
+  background-color: #263B64;
+  cursor:pointer;
+}
+
+.MyPostingMainCloseBox{
+  position: fixed;
+  width: 425px;
+  height: 228px;
+  left: calc(50% - 425px/2 + 1.5px);
+  top: calc(50% - 228px/2 - 10px);
+  background: #FFFFFF;
+  box-shadow: 0px 5px 6px -3px rgba(0, 0, 0, 0.2), 0px 9px 12px 1px rgba(0, 0, 0, 0.14), 0px 3px 16px 2px rgba(0, 0, 0, 0.12);
+  border-radius: 9px;
+}
+.MyPostingMainCloseBoxSentimentVeryDissatisfiedIcon{
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: 94px;
+  top: 99px;
+}
+.MyPostingMainCloseBoxText{
+  position: absolute;
+  width: 189px;
+  height: 23px;
+  left: calc(50% - 189px/2 + 17.5px);
+  top: calc(50% - 23px/2 - 4px);
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 23px;
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: #2D2D2D;
+}
+.MyPostingMainCloseBoxCloseButtons{
+  position: absolute;
+  left: 20px;
+  top: 164px;
+}
+.MyPostingMainCloseBoxBackButtons{
+  position: absolute;
+  left: 303px;
+  top: 164px;
+}
+
+.MyPostingMainFinishBox{
+  position: fixed;
+  width: 425px;
+  height: 228px;
+  left: calc(50% - 425px/2 + 1.5px);
+  top: calc(50% - 228px/2 - 10px);
+  background: #FFFFFF;
+  box-shadow: 0px 5px 6px -3px rgba(0, 0, 0, 0.2), 0px 9px 12px 1px rgba(0, 0, 0, 0.14), 0px 3px 16px 2px rgba(0, 0, 0, 0.12);
+  border-radius: 9px;
+}
+.MyPostingMainFinishBoxSentimentSatisfiedAltIcon{
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: 146px;
+  top: 99px;
+}
+.MyPostingMainFinishBoxText{
+  position: absolute;
+  width: 189px;
+  height: 23px;
+  left: calc(50% - 189px/2 + 17.5px);
+  top: calc(50% - 23px/2 - 4px);
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 23px;
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: #2D2D2D;
+}
+.MyPostingMainFinishBoxFinishButtons{
+  position: absolute;
+  left: 283px;
+  top: 164px;
+}
+
 /****************************forge Keyword Link*******************************
 export function BackKeywordBox1Button() {
   const classes = useStyles();

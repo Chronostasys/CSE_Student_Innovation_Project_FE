@@ -154,23 +154,23 @@ export function SimpleTabs(props) {
       <AppBar position="static" style={styleTabs}>
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example" style={styleTabs}>
           <Tab label="首页" {...a11yProps(0)} style={styleTab1} onClick={()=>props.history.push("/Home/HomePage")}/>
-          <Tab label="校园企业" {...a11yProps(1)} style={styleTab2} onClick={()=>props.history.push("/Home/SchoolCompany")}/>
-          <Tab label="大创项目" {...a11yProps(2)} style={styleTab3} onClick={()=>props.history.push("/Home/Projects")}/>
+          {/*<Tab label="校园企业" {...a11yProps(1)} style={styleTab2} onClick={()=>props.history.push("/Home/SchoolCompany")}/>
+          <Tab label="大创项目" {...a11yProps(2)} style={styleTab3} onClick={()=>props.history.push("/Home/Projects")}/>*/}
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
         <FirstPage />
       </TabPanel>
-      <TabPanel value={value} index={1}>
+      {/*<TabPanel value={value} index={1}>
         Item Two
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three
-      </TabPanel>
+      </TabPanel>*/}
       <Switch>
         <Route exact path="/Home/HomePage"></Route>
-        <Route exact path="/Home/SchoolCompany">2</Route>
-        <Route exact path="/Home/Projects">3</Route>
+        {/*<Route exact path="/Home/SchoolCompany">2</Route>
+        <Route exact path="/Home/Projects">3</Route>*/}
         <Route exact path="/"></Route>
 
       </Switch>
