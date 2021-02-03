@@ -11,6 +11,7 @@ import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import NavigationIcon from '@material-ui/icons/Navigation';
+import RegisterPage from './loadpage/Register';
 
 import MyPosting from './MyPosting';
 import './index.css';
@@ -47,6 +48,12 @@ export default function FirstPage() {
           <PaginationControlled/>
           <FirstPageUnLoadBox/>
           <ToPostingBox/>
+        </Route>
+        <Route exact path="/Home/HomePage/register">
+          <PaginationControlled/>
+          <FirstPageUnLoadBox/>
+          <ToPostingBox/>
+          <RegisterPage />
         </Route>
         <Route path="/Home/HomePage/Posting"><MyPosting style={{padding:'0'}}/></Route>
         <Route exact path="/"></Route>      
@@ -102,7 +109,7 @@ export function FirstPageUnLoadBox() {
       <FaceIcon style={{height: '54px',width:'54px',position:'absolute', left:'156px',top:"26px", opacity:'0.7'}}/>
       <div id="FirstPageUnLoadBoxText">您还未登录哦</div>
       <Link to={"/Load"} id="FirstPageUnLoadBoxLoadLink">登录</Link>
-      <Link to={"/Load/register"} id="FirstPageUnLoadBoxRegisterLink">免费注册</Link>
+      <Link to={"/Home/HomePage/register"} id="FirstPageUnLoadBoxRegisterLink">免费注册</Link>
     </div>
   );
 }

@@ -714,7 +714,7 @@ html, body {
 }
 .ToPostingBox{
   position: absolute;
-  width: 180px;
+  width: 150px;
   height: 65px;
   left: calc(10% + 850px);
   top: 459px;

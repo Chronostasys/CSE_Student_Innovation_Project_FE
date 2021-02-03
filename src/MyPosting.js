@@ -20,6 +20,7 @@ import Button from '@material-ui/core/Button';
 import SendIcon from '@material-ui/icons/Send';
 import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+
 import './index.css';
 
 import {
@@ -128,7 +129,6 @@ export function SimpleContainer(props) {
         <Route exact path="/Home/HomePage/Posting/Finish">{MyPostingMainFinishBox(props)}</Route>
         <Route exact path="/"></Route>      
     </Switch>
-
     </div>
   );
 }

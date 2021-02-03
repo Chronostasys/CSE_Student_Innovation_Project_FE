@@ -25,6 +25,7 @@ import CloseIcon from '@material-ui/icons/Close';
 
 import '../index.css';
 import { red } from '@material-ui/core/colors';
+import { ThreeSixty } from '@material-ui/icons';
 
 
 
@@ -70,6 +71,7 @@ class RegisterPage extends React.Component {
     super(props);
     this.handleRegisterPageFinishClickChange = this.handleRegisterPageFinishClickChange.bind(this);
     this.RegisterpostVerificationCode = this.RegisterpostVerificationCode.bind(this);
+    this.RegisterpostVerificationCodeBoxClick = this.RegisterpostVerificationCodeBoxClick.bind(this);
     this.onUserNameChange = this.onUserNameChange.bind(this);
     this.onEmailChange = this.onEmailChange.bind(this);
     this.onVerificationCodeChange = this.onVerificationCodeChange.bind(this);
@@ -90,19 +92,28 @@ class RegisterPage extends React.Component {
       postVerificationCodeTime: 0,
       };
   }
-  RegisterpostVerificationCode() {
-    this.setState({postVerificationCodeTime: 60});
-    let lastTime = 60;
-    let timer = null;
-    timer = setInterval(() => {
-      lastTime--;
-      if (lastTime == 0) {
-        this.setState({postVerificationCodeTime: 0});
-        clearInterval(timer);
-      }
-    }, 1000);
+  RegisterpostVerificationCodeBoxClick(){
+    const putEmail = this.state.theEmail;
+    if ( putEmail.match(".+@.+(\\..{2,3})*\\..{2,3}") ) {
+      this.setState({EmailJudge: 'T'});
+      this.RegisterpostVerificationCode();
+    } else {
+      this.setState({EmailJudge: 'F'});
+    }
   }
 
+  RegisterpostVerificationCode() {
+      this.setState({postVerificationCodeTime: 60});
+      let lastTime = 60;
+      let timer = null;
+      timer = setInterval(() => {
+        lastTime--;
+        if (lastTime == 0) {
+          this.setState({postVerificationCodeTime: 0});
+          clearInterval(timer);
+        }
+      }, 1000);
+  }
   handleRegisterPageFinishClickChange() {
     const userName = this.state.userName;
     const putEmail = this.state.theEmail;
@@ -138,7 +149,7 @@ class RegisterPage extends React.Component {
     }
     if (RegisterPageFinishClickChange) {
       this.setState({RegisterPageStage: 0});
-      this.props.history.push("/Load");    
+      this.props.history.go(-1);    
     }
   }
   onUserNameChange(e) {
@@ -185,7 +196,7 @@ class RegisterPage extends React.Component {
     if (Emailjudge == 'T') {
       TextFieldRegisterBoxEmail = <TextField label="邮箱" onChange={this.onEmailChange}/>
     } else if (Emailjudge == 'F') {
-      TextFieldRegisterBoxEmail = <TextField error id="standard-error-helper-text" label="邮箱" helperText="邮箱已注册" onChange={this.onEmailChange} />      
+      TextFieldRegisterBoxEmail = <TextField error id="standard-error-helper-text" label="邮箱" helperText="邮箱已注册或格式不正确" onChange={this.onEmailChange} />      
     }
     if (VerificationCodejudge == 'T') {
       TextFieldRegisterBoxVerificationCode = <TextField label="验证码" onChange={this.onVerificationCodeChange}/>
@@ -221,8 +232,8 @@ class RegisterPage extends React.Component {
             <div onClick={this.handleRegisterPageFinishClickChange}><RegisterBoxButton /></div>
             <div id="RegisterBoxText1">用于论坛内显示，后期可修改</div>
             <div id="RegisterBoxText2">登陆时使用</div>
-            <div id="RegisterBoxCodeText" onClick={this.RegisterpostVerificationCode}>{RegistergetVerificationCodeLink}</div>
-            <Link to={"/Load"} id="RegisterBoxCloseLoadLink" ><CloseIcon fontSize="large" style={{position:'absolute', left:'492px', top:'13px'}}/></Link>
+            <div id="RegisterBoxCodeText" onClick={this.RegisterpostVerificationCodeBoxClick}>{RegistergetVerificationCodeLink}</div>
+            <div onClick={()=>this.props.history.go(-1)}><a id="RegisterBoxCloseLoadLink" href="javascript:;"><CloseIcon fontSize="large" style={{position:'absolute', left:'492px', top:'13px'}}/></a></div>
           </div>
 
       </div>
