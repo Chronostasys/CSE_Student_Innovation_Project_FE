@@ -20,6 +20,8 @@ import Button from '@material-ui/core/Button';
 import SendIcon from '@material-ui/icons/Send';
 import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import { AxiosProvider, Request, Get, Delete, Head, Post, Put, Patch, withAxios } from 'react-axios'
+import axios from 'axios';
 
 import './index.css';
 
@@ -36,6 +38,25 @@ import {
   useParams
 } from "react-router-dom";
 
+
+{/* 
+export default function PostingMain() {
+  axios.get('http://101.200.227.216/api/auth/hello')
+    .then(function(response) {
+    console.log(response.data.msg);
+  });
+  return (
+    <div>
+      111111111
+    </div>
+  )
+
+}
+
+*/}
+
+
+
 const ButtonuseStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
@@ -43,6 +64,8 @@ const ButtonuseStyles = makeStyles((theme) => ({
     },
   },
 }));
+
+
 
 
 export function MyPostingMainCloseIcon(props) {
@@ -137,7 +160,6 @@ export function PostingMain() {
   return (
     <div>
       <PostingContent/>
-      <PostingFinishButton/>
     </div>
   );
 }

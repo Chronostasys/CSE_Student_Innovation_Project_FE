@@ -813,9 +813,9 @@ html, body {
   cursor:pointer;
 }
 .MyPostingMainFinishIcon{
-  position: absolute;
-  left: 699px;
-  bottom: 53px;
+  position: relative;
+  left: 620px;
+  bottom: 85px;
   margin: 40px 8px;
   border-radius: 50%;
   height: 45px;

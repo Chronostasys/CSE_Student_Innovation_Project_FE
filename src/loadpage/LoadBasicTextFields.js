@@ -18,6 +18,8 @@ import Icon from '@material-ui/core/Icon';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
+import { AxiosProvider, Request, Get, Delete, Head, Post, Put, Patch, withAxios } from 'react-axios'
+import axios from 'axios';
 
 import '../index.css';
 import RegisterPage from '../loadpage/Register';
@@ -26,7 +28,9 @@ import ForgeKeyword from '../loadpage/ForgetKeyword';
 
 import { red } from '@material-ui/core/colors';
 
+
 /****************************load email keyword*******************************/
+
 class LoadBasicTextFields extends React.Component {
   constructor(props) {
     super(props);
@@ -40,7 +44,6 @@ class LoadBasicTextFields extends React.Component {
       KeywordJudge: 'T',
     };
   }
-
   handleEmailChange(e) {
     this.props.handleNameChange(e.target.value);
   }
