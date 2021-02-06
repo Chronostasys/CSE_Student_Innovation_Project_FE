@@ -22,6 +22,7 @@ import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import { AxiosProvider, Request, Get, Delete, Head, Post, Put, Patch, withAxios } from 'react-axios'
 import axios from 'axios';
+import qs from 'qs';
 
 import './index.css';
 
@@ -52,7 +53,6 @@ export default function PostingMain() {
   )
 
 }
-
 */}
 
 
@@ -116,9 +116,6 @@ export function MyPostingMainFinishBox(props) {
     </div>
   )
 }
-export function MyPostingMainFinishIcon(props) {
-  props.history.push("/Home/HomePage/Posting/Finish");
-}
 export function MyPostingMainFinishBoxFinish(props) {
   props.history.push("/Home/HomePage/1");
 }
@@ -156,6 +153,29 @@ export function SimpleContainer(props) {
   );
 }
 
+
+export function MyPostingMainFinishIcon(props) {
+
+  axios({
+    method: 'post',
+    url: 'http://101.200.227.216:8080/api/blog',
+    data:  qs.stringify({
+      title: `${HeadervalueText}`,
+      content: `${TextvalueText}`,
+    })
+  })
+  .then((response) => {
+    props.history.push("/Home/HomePage/Posting/Finish");
+    console.log(response);   
+  })
+  .catch((error) => {
+    console.log(error);   
+    console.log(2);
+  });
+
+
+}
+
 export function PostingMain() {
   return (
     <div>
@@ -172,16 +192,20 @@ const PostingContentuseStyles = makeStyles((theme) => ({
   },
 }));
 
+let HeadervalueText,TextvalueText;
+
 export function PostingContent() {
   const classes = PostingContentuseStyles();
   const [Headervalue, HeadersetValue] = React.useState('');
   const [Textvalue, TextsetValue] = React.useState('');
   const HeadervaluehandleChange = (event) => {
     HeadersetValue(event.target.value);
+    HeadervalueText = Headervalue;
     console.log(event);
   };
   const TextvaluehandleChange = (event) => {
     TextsetValue(event.target.value);
+    TextvalueText = Textvalue;
     console.log(event);
   };
 
@@ -215,18 +239,6 @@ export function PostingContent() {
   );
 }
 
-export function PostingFinishButton() {
-  return (
-    <div>
-    </div>
-  );
-}
-export function PostingAbandonButton() {
-  return (
-    <div>
-    </div>
-  );
-}
 
 
 

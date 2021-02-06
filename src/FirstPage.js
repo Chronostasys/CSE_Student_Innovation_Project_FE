@@ -12,6 +12,8 @@ import EditIcon from '@material-ui/icons/Edit';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import NavigationIcon from '@material-ui/icons/Navigation';
 import RegisterPage from './loadpage/Register';
+import axios from 'axios';
+import qs from 'qs';
 
 import MyPosting from './MyPosting';
 import './index.css';
@@ -29,6 +31,12 @@ import {
   useParams
 } from "react-router-dom";
 
+let total_number = 0;
+let myselfState = 0;
+let myselfName = '';
+let myselfEmail = '';
+
+
 const PaginationControlleduseStyles = makeStyles((theme) => ({
   root: {
     '& > * + *': {
@@ -39,20 +47,52 @@ const PaginationControlleduseStyles = makeStyles((theme) => ({
 
 
 export default function FirstPage() {
+  axios({
+    method: 'get',
+    url: 'http://101.200.227.216:8080/api/blog/getBlogNumber',
+  })
+  .then((response) => {
+    total_number=response.data.total_number;
+  })
+  axios({
+    method: 'get',
+    url: 'http://101.200.227.216:8080/api/myself',
+  })
+  .then((response) => {
+    myselfState = 1;
+    myselfName = response.data.name;
+    myselfEmail = response.data.email;
+    console.log(1);
+  })
+  .catch((error) => {
+    myselfState = 0;
+    myselfName = '';
+    myselfEmail = '';
+    console.log(error);
+  })
+  let FirstPageChangeLoadBox,ToPostingHiddenBox;
+  if (myselfState == 1) {
+    FirstPageChangeLoadBox = <FirstPageUserBox/>
+    ToPostingHiddenBox = <ToPostingBox/>
+  } else {
+    FirstPageChangeLoadBox = <FirstPageUnLoadBox/>
+    ToPostingHiddenBox = null;
+  }
+
+
   return (
-    <div>      
-      
+    <div>
       <Switch>
         <Route exact path="/Home/HomePage/1" ><HomePagePosting/></Route>
         <Route exact path="/Home/HomePage">
           <PaginationControlled/>
-          <FirstPageUnLoadBox/>
-          <ToPostingBox/>
+          {FirstPageChangeLoadBox}
+          {ToPostingHiddenBox}
         </Route>
         <Route exact path="/Home/HomePage/register">
           <PaginationControlled/>
-          <FirstPageUnLoadBox/>
-          <ToPostingBox/>
+          {FirstPageChangeLoadBox}
+          {ToPostingHiddenBox}
           <RegisterPage />
         </Route>
         <Route path="/Home/HomePage/Posting"><MyPosting style={{padding:'0'}}/></Route>
@@ -97,7 +137,7 @@ export function FirstPageUserBox() {
   return (
     <div className="FirstPageUserBox">
       <div id="FirstPageUserBoxImg"></div>
-      <div id="FirstPageUserBoxName">李狗蛋</div>
+      <div id="FirstPageUserBoxName">`${myselfName}`</div>
     </div>
   );
 }

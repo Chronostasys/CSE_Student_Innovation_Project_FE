@@ -19,6 +19,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import CloseIcon from '@material-ui/icons/Close';
+import axios from 'axios';
+import qs from 'qs';
 
 import '../index.css';
 import { red } from '@material-ui/core/colors';
@@ -79,30 +81,91 @@ class ForgeKeyword extends React.Component {
     const putEmail = this.state.theEmail;
     if ( putEmail.match(".+@.+(\\..{2,3})*\\..{2,3}") ) {
       this.setState({EmailJudge: 'T'});
-      this.setState({ForgeKeywordPageStage: 2});
     } else {
       this.setState({EmailJudge: 'F'});
+      this.setState({ForgeKeywordPageStage: 2});
+      return;
     }
+    axios({
+      method: 'post',
+      url: 'http://101.200.227.216:8080/api/auth/changePassword_Email',
+      data: qs.stringify({
+        email:`${putEmail}`,
+      })
+    })
+    .then((response) => {
+      this.setState({EmailJudge: 'T'});
+      this.setState({ForgeKeywordPageStage: 2});
+      console.log(1);
+    })
+    .catch((error) => {
+      this.setState({EmailJudge: 'F'});
+      console.log(2);
+    });
   }
+
+  
   handleForgeKeywordClick2Change() {
     const putVerificationCode = this.state.VerificationCode;
+    const putEmail = this.state.theEmail;
     if ( putVerificationCode ) {
       this.setState({VerificationCodeJudge: 'T'});
-      this.setState({ForgeKeywordPageStage: 3});
     } else {
       this.setState({VerificationCodeJudge: 'F'});
+      this.setState({ForgeKeywordPageStage: 3});
+
+      return;
     }
+    axios({
+      method: 'post',
+      url: 'http://101.200.227.216:8080/api/auth/changePassword_Email',
+      data: qs.stringify({
+        email: `${putEmail}`,
+        verify_code: `${putVerificationCode}`
+      })
+    })
+    .then((response) => {
+      this.setState({VerificationCodeJudge: 'T'});
+      this.setState({ForgeKeywordPageStage: 3});
+      console.log(1);
+    })
+    .catch((error) => {
+      this.setState({VerificationCodeJudge: 'F'});
+      console.log(2);
+    });
+  
+
   }
   handleForgeKeywordClick3Change() {
+    const putVerificationCode = this.state.VerificationCode;
+    const putEmail = this.state.theEmail;
     const NewKeyword1 = this.state.NewKeyword1;
     const NewKeyword2 = this.state.NewKeyword2;
-    if (NewKeyword1 != '' && NewKeyword1 == NewKeyword2) {
+    if (NewKeyword1.match("^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$") && NewKeyword1 == NewKeyword2) {
       this.setState({NewKeywordJudge: 'T'});
-      this.setState({ForgeKeywordPageStage: 0});
-      this.props.history.push("/Load");
     } else {
       this.setState({NewKeywordJudge: 'F'});
     }
+    axios({
+      method: 'post',
+      url: 'http://101.200.227.216:8080/api/auth/changePassword',
+      data: qs.stringify({
+        email: `${putEmail}`,
+        new_password: `${NewKeyword1}`,
+        verify_code: `${putVerificationCode}`,
+      })
+    })
+    .then((response) => {
+      this.setState({NewKeywordJudge: 'T'});
+      this.setState({ForgeKeywordPageStage: 0});
+      this.props.history.push("/Load");
+      console.log(1);
+    })
+    .catch((error) => {
+      this.setState({NewKeywordJudge: 'F'});
+      console.log(2);
+    });
+
   }
   onEmailChange(emailaddress) {
     this.setState({theEmail: emailaddress});
@@ -303,7 +366,7 @@ class BackKeywordBox3 extends React.Component {
       TextFieldBackKeywordBox32 = <TextField label="确认新密码" onChange={this.handleChange2}/>
     } else if (NewKeywordJudge == 'F') {
       TextFieldBackKeywordBox31 = <TextField label="新密码" onChange={this.handleChange1}/>
-      TextFieldBackKeywordBox32 = <TextField error id="standard-error-helper-text" label="确认新密码" helperText="两次输入密码不一致" onChange={this.handleChange2} />
+      TextFieldBackKeywordBox32 = <TextField error id="standard-error-helper-text" label="确认新密码" helperText="两次输入密码不一致或密码不是由8-16位数字和字符组成" onChange={this.handleChange2} />
     }
     return (
       <div id="BackKeywordBox3" style={{zIndex:"1500"}}>

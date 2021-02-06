@@ -39,7 +39,6 @@ html, body {
   top: 644px;
   z-index: 3;
 }
-
 /*************************form box*****************************/
 .loadBoxAll{
   position: absolute;
@@ -101,6 +100,7 @@ html, body {
 #forgeKeywordLink:hover,#registerLink:hover{
   text-decoration: underline;
   color: #6E99CB;
+  cursor:pointer;
 }
 #TextFieldLoadEmail {
   position: absolute;
@@ -259,6 +259,7 @@ html, body {
 
 .BackKeywordBox2getVerificationCodeLinkT:hover{
   text-decoration: underline;
+  cursor:pointer;
 }
 
 /*******************forge Keyword Box3**********************/
@@ -379,12 +380,14 @@ html, body {
 }
 #RegisterBoxLoadLink:hover{
   text-decoration: underline;
+  cursor:pointer;
 }
 #RegisterBoxCloseLoadLink{
   color: #828282;
 }
 #RegisterBoxCloseLoadLink:hover{
   color: black;
+  cursor:pointer;
 }
 #TextFieldRegisterBoxUserNameBox{
   position: absolute;
@@ -496,6 +499,7 @@ html, body {
 }
 .RegistergetVerificationCodeLinkT:hover{
   text-decoration: underline;
+  cursor:pointer;
 }
 
 /****************************Home*******************************/
@@ -556,6 +560,7 @@ html, body {
 }
 #HomePageFrontNameHiddenBoxExit:hover{
   text-decoration-line: underline;
+  cursor:pointer;
 }
 
 
@@ -606,6 +611,7 @@ html, body {
 #FirstPageUnLoadBoxLoadLink:hover,#FirstPageUnLoadBoxRegisterLink:hover{
   text-decoration: underline;
   color: #263B64;
+  cursor:pointer;
 }
 .FirstPageUserBox{
   position: fixed;

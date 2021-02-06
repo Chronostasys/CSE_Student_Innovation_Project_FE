@@ -23,11 +23,13 @@ import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import CloseIcon from '@material-ui/icons/Close';
 import { AxiosProvider, Request, Get, Delete, Head, Post, Put, Patch, withAxios } from 'react-axios'
-
+import axios from 'axios';
+import qs from 'qs';
 
 import '../index.css';
 import { red } from '@material-ui/core/colors';
 import { ThreeSixty } from '@material-ui/icons';
+import { ButtonGroup } from '@material-ui/core';
 
 
 
@@ -104,26 +106,23 @@ class RegisterPage extends React.Component {
     }
   }
 
-
-
   RegisterpostVerificationCode() {
-    const axios=axios;
     const RegisterpostVerificationCodeEmail = this.state.theEmail;
-
+    console.log(RegisterpostVerificationCodeEmail);
     axios({
       method: 'post',
-      url: 'http://101.200.227.216/api/auth/sendVerifyCode',
-      data: {
-        "email":'"'+{RegisterpostVerificationCodeEmail}+ '"',
-      }
+      url: 'http://101.200.227.216:8080/api/auth/sendVerifyCode',
+      data:  qs.stringify({
+        email:`${RegisterpostVerificationCodeEmail}`,
+      })
     })
-    .then( (response)=> {
-      console.log(1);
+    .then((response) => {
+      this.setState({EmailJudge: 'T'});
+      console.log(response);
     })
-    .catch((error)=> {
-      console.log(2);
-    });;
-    
+    .catch((error) => {
+      this.setState({EmailJudge: 'F'});
+    });
     
     this.setState({postVerificationCodeTime: 60});
       let lastTime = 60;
@@ -142,14 +141,14 @@ class RegisterPage extends React.Component {
     const putVerificationCode = this.state.VerificationCode;
     const NewKeyword1 = this.state.NewKeyword1;
     const NewKeyword2 = this.state.NewKeyword2;
+    const VerificationCodeJudge = this.state.VerificationCodeJudge;
     let RegisterPageFinishClickChange = true;
     if ( userName.match("^[a-zA-Z0-9_]{4,16}$") ) {
       this.setState({userNameJudge: 'T'});
-      console.log(userName);
     } else {
       this.setState({userNameJudge: 'F'});
       RegisterPageFinishClickChange = false;
-      console.log(userName);
+      
     }
     if ( putEmail.match(".+@.+(\\..{2,3})*\\..{2,3}") ) {
       this.setState({EmailJudge: 'T'});
@@ -157,10 +156,9 @@ class RegisterPage extends React.Component {
       this.setState({EmailJudge: 'F'});
       RegisterPageFinishClickChange = false;
     }
-    if ( putVerificationCode ) {
-      this.setState({VerificationCodeJudge: 'T'});
+    if ( VerificationCodeJudge == 'T' ) {
+      ;
     } else {
-      this.setState({VerificationCodeJudge: 'F'});
       RegisterPageFinishClickChange = false;
     }
     if (NewKeyword1.match("^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$") ) {
@@ -176,10 +174,29 @@ class RegisterPage extends React.Component {
       RegisterPageFinishClickChange = false;
     }
     if (RegisterPageFinishClickChange) {
-      this.setState({RegisterPageStage: 0});
-      this.props.history.go(-1);    
+      axios({
+        method: 'post',
+        url: 'http://101.200.227.216:8080/api/auth/signup',
+        data:  qs.stringify({
+          email: `${putEmail}`,
+          password: `${NewKeyword1}`,
+          verify_code: `${putVerificationCode}`,
+          name: `${userName}`,
+        })
+      })
+      .then((response) => {
+        this.props.history.push("/Load/register/access");  
+        console.log(response);  
+        console.log(1);
+      })
+      .catch((error) => {
+        this.props.history.push("/Load/register/false"); 
+        console.log(error);   
+        console.log(2);
+      });
     }
   }
+  
   onUserNameChange(e) {
     const getUserName = e.target.value;
     this.setState({userName: getUserName});
@@ -212,9 +229,9 @@ class RegisterPage extends React.Component {
     if (this.state.postVerificationCodeTime == 0) {
       RegistergetVerificationCodeLink = 
       <a 
-      className="RegistergetVerificationCodeLinkT" 
-      onClick={this.RegisterpostVerificationCodeBoxClick} 
-      href="javascript:;">
+        className="RegistergetVerificationCodeLinkT" 
+        onClick={this.RegisterpostVerificationCodeBoxClick} 
+      >
         重新发送验证码
       </a>
     } else {
@@ -267,14 +284,65 @@ class RegisterPage extends React.Component {
             <div id="RegisterBoxText1">4-16位数字、字母或下划线组成，用于论坛内显示，后期可修改</div>
             <div id="RegisterBoxText2">登陆时使用</div>
             <div id="RegisterBoxCodeText">{RegistergetVerificationCodeLink}</div>
-            <div onClick={()=>this.props.history.go(-1)}><a id="RegisterBoxCloseLoadLink" href="javascript:;"><CloseIcon fontSize="large" style={{position:'absolute', left:'492px', top:'13px'}}/></a></div>
+            <div onClick={()=>this.props.history.go(-1)}><a id="RegisterBoxCloseLoadLink"><CloseIcon fontSize="large" style={{position:'absolute', left:'492px', top:'13px'}}/></a></div>
           </div>
+      <Switch>
+        <Route exact path="/Load/register/false">
+          <div id="BackKeywordBox1" style={{zIndex:"1500"}}>
+            <div id="BackKeywordBox1Header">验证码错误，请重新注册</div>
+            <div onClick={() => this.props.history.go(-1) }> 
+              <Loadregisterfalse/>     
+            </div>
+          </div>
+        </Route>
+          <Route exact path="/Load/register/access">
+            <div id="BackKeywordBox1" style={{zIndex:"1500"}}>
+              <div id="BackKeywordBox1Header">      注册成功</div>
+              <div onClick={() => this.props.history.go(-2) }>      
+              <Loadregisteraccess/>
+            </div>
+            </div>
+          </Route>
+        <Route exact path="/"></Route>
+      </Switch>
 
       </div>
       
     );
   }
 }
+
+
+export function Loadregisterfalse() {
+  const classes = useStyles();
+    return (
+      <div style={{position:"relative",top:'160px',left:'330px'}}>
+        <Button 
+          variant="contained"
+          className={classes.button}
+        >
+          返回
+        </Button>
+      </div>
+    );
+}
+
+export function Loadregisteraccess() {
+  const classes = useStyles();
+    return (
+      <div style={{position:"relative",top:'160px',left:'330px'}}>
+        <Button
+          variant="contained"
+          className={classes.button}
+        >
+          返回
+        </Button>
+      </div>
+    );
+}
+
+
+
 
 export function RegisterBoxButton() {
   const classes = useStyles();

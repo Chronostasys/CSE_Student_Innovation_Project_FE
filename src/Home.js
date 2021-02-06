@@ -8,6 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { Height } from '@material-ui/icons';
 import Avatar from '@material-ui/core/Avatar';
+import axios from 'axios';
+import qs from 'qs';
 
 import './index.css';
 import FirstPage from './FirstPage';
@@ -26,6 +28,9 @@ import {
   useParams
 } from "react-router-dom";
 
+let myselfState = 0;
+let myselfName = '';
+let myselfEmail = '';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -54,7 +59,6 @@ TabPanel.propTypes = {
 };
 
 function a11yProps(index) {
-
   return {
     id: `simple-tab-${index}`,
     'aria-controls': `simple-tabpanel-${index}`,
@@ -99,7 +103,7 @@ class HomePageFrontName extends React.Component {
   return (
     <div>
       <a className="HomePageFrontName" onClick={this.NameClick} href="javascript:;">
-        李狗蛋
+        `${myselfName}`
       </a>
       {HomePageFrontNameShowBox}
     </div>
@@ -110,8 +114,22 @@ class HomePageFrontName extends React.Component {
 export function HomePageFrontNameHiddenBox() {
   return (
     <div className="HomePageFrontNameHiddenBox">
-
-      <a id="HomePageFrontNameHiddenBoxExit" href="javascript:;">退出登录</a>
+      <a id="HomePageFrontNameHiddenBoxExit"
+        onClick={()=>  
+          axios({
+            method: 'post',
+            url: 'http://101.200.227.216:8080/api/auth/signout',
+          })
+          .then((response) => {
+            console.log(1);
+          })
+          .catch((error) => {
+            console.log(2);
+          })
+        }
+      >
+        退出登录
+      </a>
     </div>
   );
 }
@@ -126,6 +144,24 @@ export function HomePageFrontNameImage() {
 }
 
 export function SimpleTabs(props) {
+
+  axios({
+    method: 'get',
+    url: 'http://101.200.227.216:8080/api/myself',
+  })
+  .then((response) => {
+    myselfState = 1;
+    myselfName = response.data.name;
+    myselfEmail = response.data.email;
+    console.log(1);
+  })
+  .catch((error) => {
+    myselfState = 0;
+    myselfName = '';
+    myselfEmail = '';
+    console.log(error);
+  })
+
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
@@ -148,8 +184,16 @@ export function SimpleTabs(props) {
     left: '265px',
     top: '10px',
   };
+  let HomePageFrontNameHiddenBox;
+  if (myselfEmail == 1){
+    HomePageFrontNameHiddenBox = {HomePageFrontName};
+  } else{
+    HomePageFrontNameHiddenBox = null;
+  }
+
   return (
     <div className={classes.root}>
+
       <div className="HomeHeaderLogo" />
       <AppBar position="static" style={styleTabs}>
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example" style={styleTabs}>
@@ -175,11 +219,9 @@ export function SimpleTabs(props) {
 
       </Switch>
 
-      <HomePageFrontName/>
-
+      {HomePageFrontNameHiddenBox}
 
       {/*<div id="HomePageFrontNameImage"><HomePageFrontNameImage style={{opacity:'1'}}/></div>*/}
-      <HomePageFrontName/>
       
 
 

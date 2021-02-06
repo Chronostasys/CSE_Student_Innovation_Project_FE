@@ -24,6 +24,7 @@ import axios from 'axios';
 import '../index.css';
 import RegisterPage from '../loadpage/Register';
 import ForgeKeyword from '../loadpage/ForgetKeyword';
+import qs from 'qs';
 
 
 import { red } from '@material-ui/core/colors';
@@ -67,7 +68,24 @@ class LoadBasicTextFields extends React.Component {
       LoadClickChange = false;
     }
     if ( LoadClickChange ) {
-      this.props.history.push("/Home/HomePage");    
+      axios({
+        method: 'post',
+        url: 'http://101.200.227.216:8080/api/auth/login',
+        data: qs.stringify({
+          email: `${putEmail}`,
+          password: `${Keyword}`,
+        })
+      })
+      .then((response) => {
+        this.props.history.push("/Home/HomePage");    
+        console.log(response);
+        console.log(1);
+      })
+      .catch((error) => {
+        this.props.history.push("/Load/false");
+        console.log(error);
+        console.log(2);
+      });;
     }
   }
   handleEmailChange(e) {
@@ -85,12 +103,12 @@ class LoadBasicTextFields extends React.Component {
     if (EmailJudge == 'T') {
       TextFieldLoadEmail = <TextField id="load-email" label="邮箱" helperText="" onChange={this.handleEmailChange}/>
     } else if (EmailJudge == 'F'){
-      TextFieldLoadEmail = <TextField error id="load-email-error" label="邮箱" helperText="账号不存在" onChange={this.handleEmailChange} />      
+      TextFieldLoadEmail = <TextField error id="load-email-error" label="邮箱" helperText="账号不存在或密码错误" onChange={this.handleEmailChange} />      
     }
     if (KeywordJudge == 'T') {
       TextFieldLoadKeyword = <TextField width="250px" id="load-keyword" label="密码" type="password" autoComplete="current-password" onChange={this.handleKeywordChange}/>
     } else if (KeywordJudge == 'F'){
-      TextFieldLoadKeyword = <TextField error id="load-keyword-error" label="密码" helperText="密码错误" onChange={this.handleKeywordChange} />      
+      TextFieldLoadKeyword = <TextField error id="load-keyword-error" label="密码" helperText="账号不存在或密码错误" onChange={this.handleKeywordChange} />      
     }
   return (
     <div>
@@ -111,11 +129,54 @@ class LoadBasicTextFields extends React.Component {
         <Route path="/Load/forgeKeyword">
           <ForgeKeyword />
         </Route>
+        <Route exact path="/Load/false">
+          <div id="BackKeywordBox1" style={{zIndex:"1500"}}>
+            <div id="BackKeywordBox1Header">邮箱或密码错误，请重新登录</div>
+            <div onClick={ () => this.props.history.go(-1) }> 
+              <Loadregisterfalse/>     
+            </div>
+          </div>
+        </Route>
         <Route exact path="/"></Route>
       </Switch>
     </div>
   );
 }}
+const LoadregisterfalseuseStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+    color: theme.palette.text.primary,
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: 200,
+    },
+  },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff',
+  },
+  button: {
+    margin: theme.spacing(1),
+  },
+}));
+
+
+export function Loadregisterfalse() {
+  const classes = LoadregisterfalseuseStyles();
+    return (
+      <div style={{position:"relative",top:'160px',left:'330px'}}>
+        <Button 
+          variant="contained"
+          className={classes.button}
+        >
+          返回
+        </Button>
+      </div>
+    );
+}
 
 
 export default withRouter(LoadBasicTextFields);
