@@ -159,6 +159,9 @@ export function MyPostingMainFinishIcon(props) {
   axios({
     method: 'post',
     url: 'http://101.200.227.216:8080/api/blog',
+    headers: {
+      token: localStorage.getItem('token'),
+    },
     data:  qs.stringify({
       title: `${HeadervalueText}`,
       content: `${TextvalueText}`,
@@ -192,7 +195,7 @@ const PostingContentuseStyles = makeStyles((theme) => ({
   },
 }));
 
-let HeadervalueText,TextvalueText;
+let HeadervalueText, TextvalueText;
 
 export function PostingContent() {
   const classes = PostingContentuseStyles();

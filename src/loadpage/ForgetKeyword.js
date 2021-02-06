@@ -61,6 +61,9 @@ export function SimpleBackdrop() {
 }
 
 /**************************** forgeKeyword *******************************/
+
+let forgeKeywordEmail;
+
 class ForgeKeyword extends React.Component {
   constructor(props) {
     super(props);
@@ -83,7 +86,6 @@ class ForgeKeyword extends React.Component {
       this.setState({EmailJudge: 'T'});
     } else {
       this.setState({EmailJudge: 'F'});
-      this.setState({ForgeKeywordPageStage: 2});
       return;
     }
     axios({
@@ -96,6 +98,7 @@ class ForgeKeyword extends React.Component {
     .then((response) => {
       this.setState({EmailJudge: 'T'});
       this.setState({ForgeKeywordPageStage: 2});
+      forgeKeywordEmail = putEmail;
       console.log(1);
     })
     .catch((error) => {
@@ -112,13 +115,11 @@ class ForgeKeyword extends React.Component {
       this.setState({VerificationCodeJudge: 'T'});
     } else {
       this.setState({VerificationCodeJudge: 'F'});
-      this.setState({ForgeKeywordPageStage: 3});
-
       return;
     }
     axios({
       method: 'post',
-      url: 'http://101.200.227.216:8080/api/auth/changePassword_Email',
+      url: 'http://101.200.227.216:8080/api/auth/changePasswordVerify_code',
       data: qs.stringify({
         email: `${putEmail}`,
         verify_code: `${putVerificationCode}`
@@ -145,6 +146,7 @@ class ForgeKeyword extends React.Component {
       this.setState({NewKeywordJudge: 'T'});
     } else {
       this.setState({NewKeywordJudge: 'F'});
+      return;
     }
     axios({
       method: 'post',
@@ -157,7 +159,6 @@ class ForgeKeyword extends React.Component {
     })
     .then((response) => {
       this.setState({NewKeywordJudge: 'T'});
-      this.setState({ForgeKeywordPageStage: 0});
       this.props.history.push("/Load");
       console.log(1);
     })
@@ -286,17 +287,33 @@ class BackKeywordBox2 extends React.Component {
     this.props.onVerificationCodeChange(e.target.value);
   }
   BackKeywordBox2postVerificationCode() {
+    this.RegisterpostVerificationCode();
     this.setState({postVerificationCodeTime: 60});
     let lastTime = 60;
     let timer = null;
     timer = setInterval(() => {
-      console.log(lastTime);
       lastTime--;
       if (lastTime == 0) {
         this.setState({postVerificationCodeTime: 0});
         clearInterval(timer);
       }
     }, 1000);
+  }
+
+  RegisterpostVerificationCode() {
+    axios({
+      method: 'post',
+      url: 'http://101.200.227.216:8080/api/auth/sendVerifyCode',
+      data:  qs.stringify({
+        email:`${forgeKeywordEmail}`,
+      })
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
   }
 
   render() {
@@ -308,7 +325,7 @@ class BackKeywordBox2 extends React.Component {
       TextFieldBackKeywordBox2 = <TextField error id="standard-error-helper-text" label="验证码" helperText="验证码错误" onChange={this.handleChange} />
     }
     if (this.state.postVerificationCodeTime == 0) {
-      BackKeywordBox2getVerificationCodeLink = <a className="BackKeywordBox2getVerificationCodeLinkT" href="javascript:;">重新发送验证码</a>
+      BackKeywordBox2getVerificationCodeLink = <a className="BackKeywordBox2getVerificationCodeLinkT" href="javascript:;">发送验证码</a>
     } else {
       BackKeywordBox2getVerificationCodeLink = <a className="BackKeywordBox2getVerificationCodeLinkF">60s后重新获取</a>
     }

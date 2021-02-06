@@ -45,54 +45,56 @@ const PaginationControlleduseStyles = makeStyles((theme) => ({
   },
 }));
 
-
 export default function FirstPage() {
   axios({
     method: 'get',
     url: 'http://101.200.227.216:8080/api/blog/getBlogNumber',
+    headers: {
+      token: localStorage.getItem('token'),
+    },
   })
   .then((response) => {
     total_number=response.data.total_number;
   })
   axios({
     method: 'get',
-    url: 'http://101.200.227.216:8080/api/myself',
+    url: 'http://101.200.227.216:8080/api/auth/myself',
+    headers: {
+      token: localStorage.getItem('token'),
+    },
   })
   .then((response) => {
     myselfState = 1;
     myselfName = response.data.name;
     myselfEmail = response.data.email;
-    console.log(1);
+    console.log(222222312321);
+    {/* setFirstPageChangeLoadBox({FirstPageUserBox});
+    setToPostingHiddenBox({ToPostingBox});*/}
   })
   .catch((error) => {
     myselfState = 0;
     myselfName = '';
     myselfEmail = '';
     console.log(error);
+    {/* setFirstPageChangeLoadBox({FirstPageUnLoadBox});*/}
   })
-  let FirstPageChangeLoadBox,ToPostingHiddenBox;
-  if (myselfState == 1) {
-    FirstPageChangeLoadBox = <FirstPageUserBox/>
-    ToPostingHiddenBox = <ToPostingBox/>
-  } else {
-    FirstPageChangeLoadBox = <FirstPageUnLoadBox/>
-    ToPostingHiddenBox = null;
-  }
-
-
+  
+{/* 
+  const [FirstPageChangeLoadBox, setFirstPageChangeLoadBox] = React.useState();
+  const [ToPostingHiddenBox, setToPostingHiddenBox] = React.useState();*/}
   return (
     <div>
       <Switch>
         <Route exact path="/Home/HomePage/1" ><HomePagePosting/></Route>
         <Route exact path="/Home/HomePage">
           <PaginationControlled/>
-          {FirstPageChangeLoadBox}
-          {ToPostingHiddenBox}
+          {/* {FirstPageChangeLoadBox}
+          {ToPostingHiddenBox}*/}
         </Route>
         <Route exact path="/Home/HomePage/register">
           <PaginationControlled/>
-          {FirstPageChangeLoadBox}
-          {ToPostingHiddenBox}
+          {/* {FirstPageChangeLoadBox}
+          {ToPostingHiddenBox}*/}
           <RegisterPage />
         </Route>
         <Route path="/Home/HomePage/Posting"><MyPosting style={{padding:'0'}}/></Route>
@@ -137,7 +139,7 @@ export function FirstPageUserBox() {
   return (
     <div className="FirstPageUserBox">
       <div id="FirstPageUserBoxImg"></div>
-      <div id="FirstPageUserBoxName">`${myselfName}`</div>
+      <div id="FirstPageUserBoxName">{myselfName}</div>
     </div>
   );
 }
@@ -155,16 +157,39 @@ export function FirstPageUnLoadBox() {
 }
 
 
-export function SimpleContainer() {
+export function SimpleContainer(page) {
+
+
+
+  axios({
+    method: 'get',
+    url: 'http://101.200.227.216:8080/api/blog?page=0&blog_num=4',
+    headers: {
+      token: localStorage.getItem('token'),
+    },
+})
+  .then((response) => {
+    myselfState = 1;
+    myselfName = response.data.name;
+    myselfEmail = response.data.email;
+    console.log(1);
+  })
+  .catch((error) => {
+    myselfState = 0;
+    myselfName = '';
+    myselfEmail = '';
+    console.log(error);
+  })
+
   return (
     <div>
     <React.Fragment>
       <Container maxWidth="sm">
         <Typography style={{  height: '576px',width:'857px',position:'absolute', left:'calc(5% + 28px)',top:"103px"}} >
-          <Link to="/Home/HomePage/1"><MessageBox/></Link>
-          <Link to="/Home/HomePage/1"><MessageBox/></Link>
-          <MessageBox/>
-          <MessageBox/>
+          <Link to="/Home/HomePage/1">{MessageBox(page,1)}</Link>
+          <Link to="/Home/HomePage/1">{MessageBox(page,2)}</Link>
+          {MessageBox(page,3)}
+          {MessageBox(page,4)}
 
         </Typography>
       </Container>
@@ -181,16 +206,16 @@ export function PaginationControlled() {
   };
   return (
     <div className={classes.root}>
-      <SimpleContainer/>
+      {SimpleContainer(page)}
       page:{page}
-      <div style={{position:'absolute', left:'616px',top:"675px"}}><Pagination count={10} page={page} onChange={handleChange} /></div>
+      <div style={{position:'absolute', left:'616px',top:"675px"}}><Pagination count={(total_number-1)/4+1} page={page} onChange={handleChange} /></div>
     </div>
   );
 }
 
 
 
-export function MessageBox() {
+export function MessageBox(page,number) {
   return (
     <div className="MessageBox" >
       <div className="MessageBoxHeader">

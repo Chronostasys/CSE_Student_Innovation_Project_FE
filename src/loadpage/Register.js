@@ -232,7 +232,7 @@ class RegisterPage extends React.Component {
         className="RegistergetVerificationCodeLinkT" 
         onClick={this.RegisterpostVerificationCodeBoxClick} 
       >
-        重新发送验证码
+        发送验证码
       </a>
     } else {
       RegistergetVerificationCodeLink = <a className="RegistergetVerificationCodeLinkF">60s后重新获取</a>

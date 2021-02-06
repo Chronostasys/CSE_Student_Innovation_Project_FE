@@ -99,11 +99,10 @@ class HomePageFrontName extends React.Component {
     if ( this.state.NameClick ) {
       HomePageFrontNameShowBox = <HomePageFrontNameHiddenBox/>;
     }
-
   return (
     <div>
-      <a className="HomePageFrontName" onClick={this.NameClick} href="javascript:;">
-        `${myselfName}`
+      <a className="HomePageFrontName" onClick={this.NameClick}>
+        {myselfName}
       </a>
       {HomePageFrontNameShowBox}
     </div>
@@ -115,18 +114,7 @@ export function HomePageFrontNameHiddenBox() {
   return (
     <div className="HomePageFrontNameHiddenBox">
       <a id="HomePageFrontNameHiddenBoxExit"
-        onClick={()=>  
-          axios({
-            method: 'post',
-            url: 'http://101.200.227.216:8080/api/auth/signout',
-          })
-          .then((response) => {
-            console.log(1);
-          })
-          .catch((error) => {
-            console.log(2);
-          })
-        }
+        onClick={() => localStorage.removeItem("token") }
       >
         退出登录
       </a>
@@ -144,22 +132,29 @@ export function HomePageFrontNameImage() {
 }
 
 export function SimpleTabs(props) {
+  let HomePageFrontNameHiddenBox;
 
   axios({
     method: 'get',
-    url: 'http://101.200.227.216:8080/api/myself',
+    url: 'http://101.200.227.216:8080/api/auth/myself',
+    headers: {
+      token: localStorage.getItem('token'),
+    },
   })
   .then((response) => {
     myselfState = 1;
     myselfName = response.data.name;
     myselfEmail = response.data.email;
-    console.log(1);
+    HomePageFrontNameHiddenBox = {HomePageFrontName};
+    console.log(HomePageFrontNameHiddenBox);
   })
   .catch((error) => {
     myselfState = 0;
     myselfName = '';
     myselfEmail = '';
     console.log(error);
+    HomePageFrontNameHiddenBox = null;
+    console.log(2222);
   })
 
   const classes = useStyles();
@@ -184,12 +179,6 @@ export function SimpleTabs(props) {
     left: '265px',
     top: '10px',
   };
-  let HomePageFrontNameHiddenBox;
-  if (myselfEmail == 1){
-    HomePageFrontNameHiddenBox = {HomePageFrontName};
-  } else{
-    HomePageFrontNameHiddenBox = null;
-  }
 
   return (
     <div className={classes.root}>
@@ -219,8 +208,8 @@ export function SimpleTabs(props) {
 
       </Switch>
 
-      {HomePageFrontNameHiddenBox}
-
+      {HomePageFrontName}
+      
       {/*<div id="HomePageFrontNameImage"><HomePageFrontNameImage style={{opacity:'1'}}/></div>*/}
       
 
