@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -8,18 +8,11 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { Height } from '@material-ui/icons';
 import Avatar from '@material-ui/core/Avatar';
-import axios from 'axios';
-import qs from 'qs';
-
-import './index.css';
-import FirstPage from './FirstPage';
-import MyPosting from './MyPosting';
-
-import { Link } from 'react-router-dom';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Link,
   withRouter,
   NavLink,
   Redirect,
@@ -28,13 +21,20 @@ import {
   useParams
 } from "react-router-dom";
 
+import axios from 'axios';
+import qs from 'qs';
+
+import './index.css';
+import FirstPage from './FirstPage';
+import MyPosting from './MyPosting';
+
+
 let myselfState = 0;
 let myselfName = '';
 let myselfEmail = '';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-
   return (
     <div
       role="tabpanel"
@@ -97,12 +97,12 @@ class HomePageFrontName extends React.Component {
   render() {
     let HomePageFrontNameShowBox;
     if ( this.state.NameClick ) {
-      HomePageFrontNameShowBox = <HomePageFrontNameHiddenBox/>;
+      HomePageFrontNameShowBox = HomePageFrontNameHiddenBox(this.props.history);
     }
   return (
     <div>
       <a className="HomePageFrontName" onClick={this.NameClick}>
-        {myselfName}
+        {this.props.myselfName}
       </a>
       {HomePageFrontNameShowBox}
     </div>
@@ -110,11 +110,11 @@ class HomePageFrontName extends React.Component {
   }
 }
 
-export function HomePageFrontNameHiddenBox() {
+export function HomePageFrontNameHiddenBox(history) {
   return (
     <div className="HomePageFrontNameHiddenBox">
       <a id="HomePageFrontNameHiddenBoxExit"
-        onClick={() => localStorage.removeItem("token") }
+        onClick={() => {window.localStorage.removeItem('token');history.go(0)}}
       >
         退出登录
       </a>
@@ -133,6 +133,8 @@ export function HomePageFrontNameImage() {
 
 export function SimpleTabs(props) {
   let HomePageFrontNameHiddenBox;
+  const [HomePageFrontNameHiddenBoxT, setHomePageFrontNameHiddenBox] = useState(false);
+  const [myselfNameGet, setmyselfName] = useState('');
 
   axios({
     method: 'get',
@@ -145,17 +147,21 @@ export function SimpleTabs(props) {
     myselfState = 1;
     myselfName = response.data.name;
     myselfEmail = response.data.email;
-    HomePageFrontNameHiddenBox = {HomePageFrontName};
-    console.log(HomePageFrontNameHiddenBox);
+    setmyselfName(response.data.name);
+    setHomePageFrontNameHiddenBox(true);
   })
   .catch((error) => {
     myselfState = 0;
     myselfName = '';
     myselfEmail = '';
-    console.log(error);
-    HomePageFrontNameHiddenBox = null;
-    console.log(2222);
+    setHomePageFrontNameHiddenBox(false);
+    setmyselfName('');
   })
+  if (HomePageFrontNameHiddenBoxT) {
+    HomePageFrontNameHiddenBox = <HomePageFrontName myselfName={myselfNameGet} history={props.history}/>;
+  } else {
+    HomePageFrontNameHiddenBox = null;
+  }
 
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
@@ -208,7 +214,7 @@ export function SimpleTabs(props) {
 
       </Switch>
 
-      {HomePageFrontName}
+      {HomePageFrontNameHiddenBox}
       
       {/*<div id="HomePageFrontNameImage"><HomePageFrontNameImage style={{opacity:'1'}}/></div>*/}
       

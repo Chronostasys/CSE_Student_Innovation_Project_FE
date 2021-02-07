@@ -88,6 +88,7 @@ export function MyPostingMainCloseBox(props) {
   )
 }
 export function MyPostingMainCloseBoxCloseButtons() {
+  
   const classes = ButtonuseStyles();
   return (
     <div className={classes.root}>
