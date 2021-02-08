@@ -39,24 +39,6 @@ import {
   useParams
 } from "react-router-dom";
 
-
-{/* 
-export default function PostingMain() {
-  axios.get('http://101.200.227.216/api/auth/hello')
-    .then(function(response) {
-    console.log(response.data.msg);
-  });
-  return (
-    <div>
-      111111111
-    </div>
-  )
-
-}
-*/}
-
-
-
 const ButtonuseStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
@@ -64,9 +46,6 @@ const ButtonuseStyles = makeStyles((theme) => ({
     },
   },
 }));
-
-
-
 
 export function MyPostingMainCloseIcon(props) {
   props.history.push("/Home/HomePage/Posting/Back");
@@ -238,6 +217,8 @@ export function PostingContent() {
             onChange={TextvaluehandleChange}  
           />
         </div>
+        <div>{Headervalue}</div>
+        <div>{Textvalue}</div>
       </form>
     </div>
   );
@@ -245,5 +226,23 @@ export function PostingContent() {
 
 
 
-
 export default withRouter(SimpleContainer);
+
+
+
+
+{/* 
+export default function PostingMain() {
+  axios.get('http://101.200.227.216/api/auth/hello')
+    .then(function(response) {
+    console.log(response.data.msg);
+  });
+  return (
+    <div>
+      111111111
+    </div>
+  )
+
+}
+*/}
+

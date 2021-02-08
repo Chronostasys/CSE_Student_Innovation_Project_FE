@@ -99,7 +99,11 @@ const GetFirstPage=(props)=> {
           {FirstPageChangeLoadBox}
           {ToPostingHiddenBox}
         </Route>
-        <Route exact path="/"></Route>      
+        <Route exact path="/">        
+          {PaginationControlled(props.history)}
+          {FirstPageChangeLoadBox}
+          {ToPostingHiddenBox}
+        </Route>      
       </Switch>
     </div>
     )
@@ -219,7 +223,6 @@ export function FirstPageUnLoadBox() {
 
 export function SimpleContainer(thepage,history) {
   const [posts, setPosts]=useState([])
-
   const getPosts = async () => {
     try {
     const userPosts = await   axios({
@@ -246,7 +249,6 @@ export function SimpleContainer(thepage,history) {
           {PostList(thepage,1,history)}
           {PostList(thepage,2,history)}
           {PostList(thepage,3,history)}
-          page:{thepage}
         </Typography>
       </Container>
     </React.Fragment>

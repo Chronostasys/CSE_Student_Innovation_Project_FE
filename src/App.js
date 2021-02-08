@@ -52,7 +52,7 @@ export default function App() {
       <Switch>
         <Route path="/Load"><LoadBasicTextFields /><IndexBackground /></Route>
         <Route path="/Home"><Home /></Route>
-        <Route exact path="/"></Route>
+        <Route exact path="/"><Home /></Route>
 
       </Switch>
 

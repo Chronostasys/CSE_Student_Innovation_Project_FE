@@ -161,7 +161,7 @@ class RegisterPage extends React.Component {
     } else {
       RegisterPageFinishClickChange = false;
     }
-    if (NewKeyword1.match("^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$") ) {
+    if (NewKeyword1.match("^.{8,16}$") ) {
       this.setState({NewKeywordJudge1: 'T'});
     } else {
       this.setState({NewKeywordJudge1: 'F'});
@@ -257,7 +257,7 @@ class RegisterPage extends React.Component {
     if (NewKeywordJudge1 == 'T') {
       TextFieldRegisterBoxKeyword1 = <TextField type="password" label="密码" onChange={this.onKeywordChange1}/>
     } else if (NewKeywordJudge1 == 'F') {
-      TextFieldRegisterBoxKeyword1 = <TextField error id="standard-error-helper-text" type="password" label="密码" helperText="密码必须由8-16位数字加字符组成" onChange={this.onKeywordChange1} />      
+      TextFieldRegisterBoxKeyword1 = <TextField error id="standard-error-helper-text" type="password" label="密码" helperText="密码必须由8-16位数字或字符组成" onChange={this.onKeywordChange1} />      
     }
     if (NewKeywordJudge2 == 'T') {
       TextFieldRegisterBoxKeyword2 = <TextField type="password" label="密码" onChange={this.onKeywordChange2}/>
