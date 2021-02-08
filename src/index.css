@@ -654,7 +654,7 @@ html, body {
 }
 .MessageBoxHeader{
   height: 22px;
-  width: 339px;
+  width: 459px;
   font-family: Microsoft YaHei UI;
   font-style: normal;
   font-weight: bold;
@@ -662,20 +662,31 @@ html, body {
   line-height: 157%;
   letter-spacing: 0.1px;
   color: #263B64;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 .MessageBoxMainText{
   position: relative;
   top: 18px;
+  font-size: 14px;
+  width: 430px; 
   height: 40px;
-  width: 388px;
   font-family: Microsoft YaHei UI;
   font-style: normal;
   font-weight: normal;
-  font-size: 12px;
   line-height: 157%;
   letter-spacing: 0.1px;
   color: #626262;
+  line-height: 20px;
+  word-break: break-all;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; 
+  -webkit-box-orient: vertical;
 }
+
 .MessageBoxTopDot{
   position: relative;
   bottom: 72px;
@@ -706,7 +717,7 @@ html, body {
   width: 190px;
 }
 .MessageBoxName{
-  float: left;
+  float: right;
   font-family: Microsoft YaHei UI;
   font-style: normal;
   font-weight: 500;
@@ -779,6 +790,13 @@ html, body {
   line-height: 157%;
   letter-spacing: 0.1px;
   color: #263B64;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 0px;
+  white-space:normal;
+  word-break:break-all;
+  word-wrap:break-word; 
 }
 .HomePagePostingHeaderTime{
   margin: 12px 0 0 0;
@@ -799,7 +817,7 @@ html, body {
   font-family: Microsoft YaHei UI;
   font-style: normal;
   font-weight: normal;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 200%;
   letter-spacing: 0.1px;
   color: #626262;
@@ -807,6 +825,9 @@ html, body {
   order: 0;
   flex-grow: 0;
   margin: 0px 0px;
+  white-space:normal;
+  word-break:break-all;
+  word-wrap:break-word; 
 }
 
 

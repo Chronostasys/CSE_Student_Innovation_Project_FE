@@ -118,14 +118,14 @@ export function MyPostingMainFinishBox(props) {
   )
 }
 export function MyPostingMainFinishBoxFinish(props) {
-  props.history.push("/Home/HomePage/1");
+  props.history.push("/Home/HomePage");
 }
 
 export function MyPostingMainCloseBoxFinishButtons() {
   const classes = ButtonuseStyles();
   return (
     <div className={classes.root}>
-      <Button variant="contained" endIcon={<ArrowForwardIcon />}>查看帖子</Button>
+      <Button variant="contained" endIcon={<ArrowForwardIcon />}>返回首页</Button>
     </div>
   );
 }
