@@ -142,7 +142,7 @@ class ForgeKeyword extends React.Component {
     const putEmail = this.state.theEmail;
     const NewKeyword1 = this.state.NewKeyword1;
     const NewKeyword2 = this.state.NewKeyword2;
-    if (NewKeyword1.match("^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$") && NewKeyword1 == NewKeyword2) {
+    if (NewKeyword1.match("^.{8,16}$") && NewKeyword1 == NewKeyword2) {
       this.setState({NewKeywordJudge: 'T'});
     } else {
       this.setState({NewKeywordJudge: 'F'});
@@ -374,7 +374,6 @@ class BackKeywordBox3 extends React.Component {
   handleChange2(e) {
     this.props.onKeywordChange2(e.target.value);
   }
-
   render() {
     const NewKeywordJudge = this.props.NewKeywordJudge;
     let TextFieldBackKeywordBox31, TextFieldBackKeywordBox32;
@@ -383,7 +382,7 @@ class BackKeywordBox3 extends React.Component {
       TextFieldBackKeywordBox32 = <TextField label="确认新密码" onChange={this.handleChange2}/>
     } else if (NewKeywordJudge == 'F') {
       TextFieldBackKeywordBox31 = <TextField label="新密码" onChange={this.handleChange1}/>
-      TextFieldBackKeywordBox32 = <TextField error id="standard-error-helper-text" label="确认新密码" helperText="两次输入密码不一致或密码不是由8-16位数字和字符组成" onChange={this.handleChange2} />
+      TextFieldBackKeywordBox32 = <TextField error id="standard-error-helper-text" label="确认新密码" helperText="两次输入密码不一致或密码不是由8-16位数字或字符组成" onChange={this.handleChange2} />
     }
     return (
       <div id="BackKeywordBox3" style={{zIndex:"1500"}}>

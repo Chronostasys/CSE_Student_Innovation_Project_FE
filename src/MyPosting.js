@@ -48,13 +48,13 @@ const ButtonuseStyles = makeStyles((theme) => ({
 }));
 
 export function MyPostingMainCloseIcon(props) {
-  props.history.push("/Home/HomePage/Posting/Back");
+  props.history.push("/home/homepage/posting/back");
 }
 export function MyPostingMainCloseBoxClose(props) {
-  props.history.push("/Home/HomePage");
+  props.history.push("/home/homepage");
 }
 export function MyPostingMainCloseBoxBack(props) {
-  props.history.push("/Home/HomePage/Posting");
+  props.history.push("/home/homepage/posting");
 }
 export function MyPostingMainCloseBox(props) {
   return (
@@ -123,19 +123,18 @@ export function SimpleContainer(props) {
         </Typography>
       </Container>
     </React.Fragment>
-
     <Switch>
-        <Route exact path="/Home/HomePage/Posting/Back">{MyPostingMainCloseBox(props)}</Route>
-        <Route exact path="/Home/HomePage/Posting/Finish">{MyPostingMainFinishBox(props)}</Route>
+        <Route exact path="/home/homepage/posting/back">{MyPostingMainCloseBox(props)}</Route>
+        <Route exact path="/home/homepage/posting/finish">{MyPostingMainFinishBox(props)}</Route>
         <Route exact path="/"></Route>      
     </Switch>
     </div>
   );
 }
 
-
 export function MyPostingMainFinishIcon(props) {
-
+  console.log(HeadervalueText);
+  console.log(TextvalueText);
   axios({
     method: 'post',
     url: 'http://101.200.227.216:8080/api/blog',
@@ -148,15 +147,13 @@ export function MyPostingMainFinishIcon(props) {
     })
   })
   .then((response) => {
-    props.history.push("/Home/HomePage/Posting/Finish");
+    props.history.push("/home/homepage/posting/finish");
     console.log(response);   
   })
   .catch((error) => {
     console.log(error);   
     console.log(2);
   });
-
-
 }
 
 export function PostingMain() {
@@ -191,7 +188,6 @@ export function PostingContent() {
     TextvalueText = Textvalue;
     console.log(event);
   };
-
   return (
     <div>
       <form className={classes.root} noValidate autoComplete="off">
@@ -217,8 +213,6 @@ export function PostingContent() {
             onChange={TextvaluehandleChange}  
           />
         </div>
-        <div>{Headervalue}</div>
-        <div>{Textvalue}</div>
       </form>
     </div>
   );

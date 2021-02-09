@@ -78,12 +78,12 @@ class LoadBasicTextFields extends React.Component {
       })
       .then((response) => {
         localStorage.setItem('token', response.data.token);
-        this.props.history.push("/Home/HomePage"); 
+        this.props.history.push("/home/homepage"); 
         console.log(response);
         console.log(1);
       })
       .catch((error) => {
-        this.props.history.push("/Load/false");
+        this.props.history.push("/load/false");
         console.log(error);
         console.log(2);
       });;

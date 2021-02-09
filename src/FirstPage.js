@@ -51,8 +51,8 @@ export function firstPageMain(props) {
     <div>
       {GetFirstPage(props)}
       <Switch>
-        <Route path="/Home/HomePage/Posting"><MyPosting style={{padding:'0'}}/></Route>
-        <Route exact path="/Home/HomePage/register">
+        <Route path="/home/homepage/posting"><MyPosting style={{padding:'0'}}/></Route>
+        <Route exact path="/home/homepage/register">
           <RegisterPage />
         </Route>
       </Switch>
@@ -93,8 +93,8 @@ const GetFirstPage=(props)=> {
       return(
       <div>
       <Switch>
-        <Route path={`/Home/HomePage/:ID`}><HomePagePosting/></Route>
-        <Route exact path="/Home/HomePage">
+        <Route path={`/home/homepage/:ID`}><HomePagePosting/></Route>
+        <Route exact path="/home/homepage">
           {PaginationControlled(props.history)}
           {FirstPageChangeLoadBox}
           {ToPostingHiddenBox}
@@ -108,64 +108,6 @@ const GetFirstPage=(props)=> {
     </div>
     )
 };
-
-{/** 
-export function FirstPage(props) {
-  let FirstPageChangeLoadBox,ToPostingHiddenBox;
-  const [FirstPageChangeLoadBoxT, setFirstPageChangeLoadBox] = useState(false);
-  const [myselfNameGet, setmyselfName] = useState('');
-
-
-
-
-
-  axios({
-    method: 'get',
-    url: 'http://101.200.227.216:8080/api/auth/myself',
-    headers: {
-      token: localStorage.getItem('token'),
-    },
-  })
-  .then((response) => {
-    myselfState = 1;
-    myselfEmail = response.data.email;
-    const name = response.data.name;
-    setFirstPageChangeLoadBox(true);
-    setmyselfName(name);
-    console.log(FirstPageChangeLoadBoxT);
-    console.log(myselfName);
-  })
-  .catch((error) => {
-  })
-  if (FirstPageChangeLoadBoxT) {
-    FirstPageChangeLoadBox = FirstPageUserBox(myselfNameGet);
-    ToPostingHiddenBox = <ToPostingBox/>;
-  } else {
-    FirstPageChangeLoadBox = <FirstPageUnLoadBox/>;
-    ToPostingHiddenBox = null;
-  }
-
-  return (
-    <div>
-      <Switch>
-        <Route path={`/Home/HomePage/:ID`}><HomePagePosting/></Route>
-        <Route exact path="/Home/HomePage">
-          {PaginationControlled(props.history)}
-          {FirstPageChangeLoadBox}
-          {ToPostingHiddenBox}
-        </Route>
-        <Route exact path="/Home/HomePage/register">
-          {PaginationControlled(props.history)}
-          {FirstPageChangeLoadBox}
-          {ToPostingHiddenBox}
-          <RegisterPage />
-        </Route>
-        <Route path="/Home/HomePage/Posting"><MyPosting style={{padding:'0'}}/></Route>
-        <Route exact path="/"></Route>      
-      </Switch>
-    </div>
-  );
-}*/}
 
 const useStylesPostingButton = makeStyles((theme) => ({
   root: {
@@ -194,8 +136,8 @@ export function FloatingActionButtons() {
 export function ToPostingBox() {
   return (
     <div className="ToPostingBox">
-      <Link to="/Home/HomePage/Posting"><FloatingActionButtons/></Link>
-      <Link to="/Home/HomePage/Posting" className="ToPostingBoxText">我要发帖</Link>
+      <Link to="/home/homepage/posting"><FloatingActionButtons/></Link>
+      <Link to="/home/homepage/posting" className="ToPostingBoxText">我要发帖</Link>
     </div>
   );
 }
@@ -215,8 +157,8 @@ export function FirstPageUnLoadBox() {
     <div className="FirstPageUnLoadBox">
       <FaceIcon style={{height: '54px',width:'54px',position:'absolute', left:'156px',top:"26px", opacity:'0.7'}}/>
       <div id="FirstPageUnLoadBoxText">您还未登录哦</div>
-      <Link to={"/Load"} id="FirstPageUnLoadBoxLoadLink">登录</Link>
-      <Link to={"/Home/HomePage/register"} id="FirstPageUnLoadBoxRegisterLink">免费注册</Link>
+      <Link to={"/load"} id="FirstPageUnLoadBoxLoadLink">登录</Link>
+      <Link to={"/home/homepage/register"} id="FirstPageUnLoadBoxRegisterLink">免费注册</Link>
     </div>
   );
 }
@@ -293,37 +235,6 @@ const PaginationControlled=(history)=> {
 }
 
 
-
-{/** 
-export function PaginationControlled(history) {
-  const classes = PaginationControlleduseStyles();
-  const [page, setPage] = React.useState(1);
-  const handleChange = (event, value) => {
-    setPage(value);
-  };
-  const [thetotal_number, setthetotal_number] = useState('');
-  axios({
-    method: 'get',
-    url: 'http://101.200.227.216:8080/api/blog/getBlogNumber',
-    headers: {
-      token: localStorage.getItem('token'),
-    },
-  })
-  .then((response) => {
-    const the_total_number = response.data.total_number;
-    setthetotal_number(the_total_number);
-  })
-  return (
-    <div className={classes.root}>
-      {SimpleContainer(page,history)}
-      <div style={{position:'absolute', left:'616px',top:"675px"}}><Pagination count={parseInt((thetotal_number-1)/4)+1} page={page} onChange={handleChange} /></div>
-    </div>
-  );
-}
-
-*/}
-
-
 const PostList=(page,index,history)=> {
   const [posts, setPosts]=useState([]);
   let theURL = 'http://101.200.227.216:8080/api/blog?page='+(page-1)+'&blog_num=4';
@@ -357,7 +268,7 @@ const PostList=(page,index,history)=> {
       let publish_times = posts.msg[index].publish_time.substring(0, 19);
       let author_names = posts.msg[index].author_name; 
       return(
-    <div className="MessageBox" onClick={()=>history.push("/Home/HomePage/"+blogsIDs)}>
+    <div className="MessageBox" onClick={()=>history.push("/home/homepage/"+blogsIDs)}>
       <div className="MessageBoxHeader">
         {titles}
       </div>
@@ -387,80 +298,6 @@ const PostList=(page,index,history)=> {
 }
 }
 
-
-
-{/*
-export function MessageBox(page,index,history) {
-  const [SimpleContainerT, setSimpleContainer] = useState(false);
-  const [blogsIDs, setblogsIDs] = React.useState('');
-  const [titles, settitles] = React.useState('');
-  const [contents, setcontents] = React.useState('');
-  const [author_names, setauthor_names] = React.useState('');
-  const [publish_times, setpublish_times] = React.useState('');
-  const thepage = 'http://101.200.227.216:8080/api/blog?page='+(page-1)+'&blog_num=4';
-  axios({
-    method: 'get',
-    url: thepage,
-    headers: {
-      token: localStorage.getItem('token'),
-    },
-  })
-  .then((response) => {
-    myselfState = 1;
-    const blog_id = response.data.msg[index].blog_id;
-    const title = response.data.msg[index].title;
-    const content = response.data.msg[index].content;
-    const author_name = response.data.msg[index].author_name;
-    const publish_time = response.data.msg[index].publish_time;
-    let thepublish_time = publish_time.substring(0, 19);
-    setblogsIDs(blog_id);
-    settitles(title);
-    setcontents(content);
-    setauthor_names(author_name);
-    setpublish_times(thepublish_time);
-    setSimpleContainer(true);
-  })
-  .catch((error) => {         */}
-  {/*   myselfState = 0;
-    myselfName = '';
-    myselfEmail = '';
-    setSimpleContainer(false);
-    setblogsIDs('');
-    settitles('');
-    setcontents('');
-    setauthor_names('');
-    setpublish_times('');
-  })
-  let theurl = "/Home/HomePage/"+`${blogsIDs}`;
-  console.log(theurl);
-  let match = useRouteMatch();
-  return (
-    <div className="MessageBox" onClick={()=>history.push("/Home/HomePage/"+blogsIDs)}>
-      <div className="MessageBoxHeader">
-        {titles}
-      </div>
-      <span className="MessageBoxMainText" style={{"WebkitBoxOrient": "vertical"}}>
-        {contents}
-      </span>    
-      <div className="MessageBoxTopDot"/>
-      <div className="MessageBoxTime">
-        {publish_times}
-      </div>
-      <div className="MessageBoxPoster">    
-        <div className="MessageBoxName">
-          {author_names}
-        </div>*/}    
-        {/*<div className="MessageBoxCompanyName">
-         
-        </div>   
-      </div>
-
-
-
-    </div>
-  );
-}
-*/} 
 export default withRouter(firstPageMain);
 
 
