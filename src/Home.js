@@ -26,6 +26,7 @@ import qs from 'qs';
 
 import './index.css';
 import FirstPage from './FirstPage';
+import SchoolCompany from './SchoolCompany';
 import MyPosting from './MyPosting';
 
 
@@ -164,7 +165,7 @@ export function SimpleTabs(props) {
   }
 
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(1);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -193,21 +194,22 @@ export function SimpleTabs(props) {
       <AppBar position="static" style={styleTabs}>
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example" style={styleTabs}>
           <Tab label="首页" {...a11yProps(0)} style={styleTab1} onClick={()=>props.history.push("/home/homepage")}/>
-          {/*<Tab label="校园企业" {...a11yProps(1)} style={styleTab2} onClick={()=>props.history.push("/Home/SchoolCompany")}/>
-          <Tab label="大创项目" {...a11yProps(2)} style={styleTab3} onClick={()=>props.history.push("/Home/Projects")}/>*/}
+          <Tab label="校园企业" {...a11yProps(1)} style={styleTab2}/>
+          <Tab label="大创项目" {...a11yProps(2)} style={styleTab3}/>
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
         <FirstPage />
+        {HomePageFrontNameHiddenBox}      
       </TabPanel>
-      {/*<TabPanel value={value} index={1}>
-        Item Two
+      <TabPanel value={value} index={1}>
+        <SchoolCompany />
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three
-      </TabPanel>*/}
+      </TabPanel>
 
-      {HomePageFrontNameHiddenBox}
+      
       
       {/*<div id="HomePageFrontNameImage"><HomePageFrontNameImage style={{opacity:'1'}}/></div>*/}
       
@@ -222,8 +224,7 @@ export function homeMain(props) {
     <div>
       <Switch>
         <Route path="/home/homepage">{SimpleTabs(props)}</Route>
-        {/*<Route exact path="/home/schoolCompany">2</Route>
-        <Route exact path="/home/projects">3</Route>*/}
+        <Route path="/home/schoolcompany">{SimpleTabs(props)}</Route>
         <Route exact path="/">{SimpleTabs(props)}</Route>
 
       </Switch>

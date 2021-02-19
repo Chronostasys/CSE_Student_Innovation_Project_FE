@@ -943,51 +943,214 @@ html, body {
   top: 164px;
 }
 
-/****************************forge Keyword Link*******************************
-export function BackKeywordBox1Button() {
-  const classes = useStyles();
-  return (
-    <div>
-      <Button id="BackKeywordBox1Button"
-        variant="contained"
-        color="primary"
-        className={classes.button}
-        endIcon={<ArrowForwardIcon />}
-      >
-        下一步
-      </Button>
-    </div>
-  );
+/**************************** SchoolCompany List *******************************/
+.SchoolCompanyList{
+  position: absolute;
+  width: 1041px;
+  height: 830px;
+  top: 113px;
+  left: calc(50% - 1041px/2);
 }
-
-class BackKeywordBox extends React.Component {
-  render() {
-    return (
-      <div id="BackKeywordBox1">
-        <div id="BackKeywordBox1Header">找回密码</div>
-        <div id="BackKeywordBox1TextField"><TextField label="注册邮箱" /></div>
-        <BackKeywordBox1Button />
-      </div>
-    );
+@media screen and (max-width: 1041px) {
+  html .SchoolCompanyList{
+    left:0px;
   }
 }
 
+.SchoolCompanyLink{
+  width: 1041px;
+  height: 245px;
+  margin: 0 0 31px 0;
 
-export function SimpleBackdrop1() {
-  const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-  const handleToggle = () => {
-    setOpen(!open);
-  };
+  background: #FFFFFF;
   
-    console.log(1);
-    handleToggle();
-    return (
-      <div>
-        <BackKeywordBox />
-      </div>
-    );
-  
-  
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  overflow:hidden;
 }
-*/
+.SchoolCompanyLink:hover{
+  cursor:pointer;
+}
+.SchoolCompanyImg{
+  margin: 33px 0 0 40px;
+  top: 10px;
+  width: 360px;
+  height: 180px;
+  background: #DDDDDD;
+  border-radius: 4px;  
+}
+.SchoolCompanyName{
+  position: relative;
+  left: 469px;
+  bottom: 128px;
+  width: 193px;
+  height: 38px;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color: #263B64;
+}
+.SchoolCompanyContent{
+  position: relative;
+  left: 471px;
+  bottom: 119px;
+  width: 193px;
+  height: 38px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color: #626262;
+}
+.schoolCompanyPage{
+  position: absolute;
+  width: 712px;
+  height: 569px;
+  left: calc(50% - 712px/2 + 10px);
+  top: 115px;
+  background: #FFFFFF;
+  box-shadow: 0px 5px 6px -3px rgba(0, 0, 0, 0.2), 0px 9px 12px 1px rgba(0, 0, 0, 0.14), 0px 3px 16px 2px rgba(0, 0, 0, 0.12);
+  border-radius: 9px;
+  z-index: 5000;
+}
+@media screen and (max-width: 712px) {
+  html .schoolCompanyPage{
+    left:0px;
+  }
+}
+.schoolCompanyPageImg{
+  position: absolute;
+  width: 278px;
+  height: 139px;
+  left: 45px;
+  top: 37px;
+  background: #DDDDDD;
+  border-radius: 4px;
+}
+.schoolCompanyPageName{
+  position: absolute;
+  left: 356px;
+  top: 72px;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color: #263B64;
+}
+.schoolCompanyPageContent{
+  position: absolute;
+  left: 356px;
+  top: 119px;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color: #626262;
+}
+.schoolCompanyPageLongContent{
+  position: absolute;
+  height: 85px;
+  width: 619px;
+  left: 49px;
+  top: 213px;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 200%;
+  letter-spacing: 0.1px;
+  color: #626262;
+  overflow:auto;
+}
+.schoolCompanyPageEmail{
+  position: absolute;
+  left: 100px;
+  top: 365px;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color: #626262;
+}
+.schoolCompanyPagePhone1{
+  position: absolute;
+  left: 100px;
+  top: 412px;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color: #626262;
+}
+.schoolCompanyPagePhone2{
+  position: absolute;
+  left: 100px;
+  top: 453px;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color: #626262;
+}
+.schoolCompanyPageLocation{
+  position: absolute;
+  left: 100px;
+  top: 495px;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color: #626262;
+}
+.schoolCompanyPageLine{
+  position: absolute;
+  width: 647px;
+  height: 0px;
+  left: 34px;
+  top: 327px;
+  border-bottom: 2px solid #E0E0E0;
+}
+.schoolCompanyPageMailIcon{
+  position: absolute;
+  left: 47px;
+  top: 364px;
+}
+.schoolCompanyPagePhoneIcon{
+  position: absolute;
+  left: 47px;
+  top: 406px;
+}
+.schoolCompanyPageStayPrimaryPortraitIcon{
+  position: absolute;
+  left: 47px;
+  top: 447px;
+}
+.schoolCompanyPageLocationOnIcon{
+  position: absolute;
+  left: 47px;
+  top: 491px;
+}
+.schoolCompanyPageCloseIcon{
+  position: absolute;
+  left: 746px;
+  top: 22px;
+}
+.schoolCompanyPageCloseIcon:hover{
+  cursor: pointer;
+}

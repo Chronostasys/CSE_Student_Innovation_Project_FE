@@ -291,10 +291,7 @@ const PostList=(page,index,history)=> {
     )}
     else{
       return;
-
-      
     }
-
 }
 }
 
