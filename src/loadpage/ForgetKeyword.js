@@ -22,7 +22,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import axios from 'axios';
 import qs from 'qs';
 
-import '../index.css';
+import '../indexLoad.css';
 import { red } from '@material-ui/core/colors';
 
 /****************************useStyles*******************************/

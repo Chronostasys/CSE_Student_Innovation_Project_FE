@@ -11,12 +11,13 @@ import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import NavigationIcon from '@material-ui/icons/Navigation';
+import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
 import RegisterPage from './loadpage/Register';
 import axios from 'axios';
 import qs from 'qs';
 
 import MyPosting from './MyPosting';
-import './index.css';
+import './indexHomepage.css';
 
 import {
   BrowserRouter as Router,
@@ -143,14 +144,42 @@ export function ToPostingBox() {
 }
 
 export function FirstPageUserBox(getmyselfName) {
+  let OrganizationName ="华中科技大学";
   return (
     <div className="FirstPageUserBox">
       <div id="FirstPageUserBoxImg"></div>
-      <div id="FirstPageUserBoxName">{getmyselfName}</div>
+      <div className="FirstPageUserBoxNameBox">
+        <div id="FirstPageUserBoxName">{getmyselfName}</div>
+      </div>
+      <div className="FirstPageUserBoxOrganizationBox">
+        <div className="FirstPageUserOrganizationHeaderBox">
+          <div className="FirstPageUserOrganizationHeader">
+            <SupervisedUserCircleIcon color="action" style={{ fontSize: 27 }}/>
+            <div className="FirstPageUserOrganizationHeaderText">
+              我的组织
+            </div>            
+          </div>
+        </div>
+        <div className="FirstPageUserOrganizationList">
+          {FirstPageUserOrganization(OrganizationName)}
+          {FirstPageUserOrganization(OrganizationName)}
+        </div>
+        <div className="FirstPageUserOrganizationJoinBox">
+          <div className="FirstPageUserOrganizationJoinImg"></div>
+          <div className="FirstPageUserOrganizationJoin">
+            申请加入组织
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
 
+export function FirstPageUserOrganization(OrganizationName) {
+  return (
+    <div className="FirstPageUserOrganization">●&nbsp;&nbsp;&nbsp;{OrganizationName}</div>
+  );
+}
 
 export function FirstPageUnLoadBox() {
   return (

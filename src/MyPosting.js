@@ -24,7 +24,7 @@ import { AxiosProvider, Request, Get, Delete, Head, Post, Put, Patch, withAxios 
 import axios from 'axios';
 import qs from 'qs';
 
-import './index.css';
+import './indexHomepage.css';
 
 import {
   BrowserRouter as Router,

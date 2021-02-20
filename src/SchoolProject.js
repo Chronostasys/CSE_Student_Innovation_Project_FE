@@ -53,16 +53,16 @@ const PaginationControlleduseStyles = makeStyles((theme) => ({
   },
 }));
 
+export function SchoolProjectMain(props) {
 
-export function SchoolCompanyMain(props) {
   return(
     <div>
-      {GetSchoolCompanyPage(props.history)}
+      {GetSchoolProjectPage(props.history)}
     </div>
   )
 }
 
-export function GetSchoolCompanyPage(history) {
+export function GetSchoolProjectPage(history) {
   const [posts, setPosts]=useState([])
   const classes = PaginationControlleduseStyles();
   const [page, setPage] = React.useState(1);
@@ -70,29 +70,28 @@ export function GetSchoolCompanyPage(history) {
     setPage(value);
   };
 
-
   return (
     <div>
-      {SchoolCompanyList(page,history)}
+      {SchoolProjectList(page,history)}
       <div style={{position:'absolute', right:"calc(50% - 1041px/2)",top:"995px"}}>
-          <Pagination count={parseInt(10)} page={page} onChange={handleChange} className="SchoolCompanyListPagination"/>
+          <Pagination count={parseInt(2)} page={page} onChange={handleChange} className="SchoolProjectListPagination"/>
       </div>
 
     </div>
   );
 }
 
-export function SchoolCompanyList(page,history) {
+export function SchoolProjectList(page,history) {
 
-    return (
+  return (
     <div>
     <React.Fragment>
       <Container maxWidth="sm">
-        <Typography className="SchoolCompanyList">
+        <Typography className="SchoolProjectList">
           page:{page}
-          {SchoolCompanyLink(history)}
-          {SchoolCompanyLink(history)}
-          {SchoolCompanyLink(history)}          
+          {SchoolProjectLink(history)}
+          {SchoolProjectLink(history)}
+          {SchoolProjectLink(history)}          
 
         </Typography>
       </Container>
@@ -101,7 +100,7 @@ export function SchoolCompanyList(page,history) {
   )
 }
 
-export function SchoolCompanyLink(history) {
+export function SchoolProjectLink(history) {
   const classes = useStylesbackdrop();
   const [open, setOpen] = React.useState(false);
   const handleClose = () => {
@@ -113,19 +112,19 @@ export function SchoolCompanyLink(history) {
 
   return(
     <div>
-    <div className="SchoolCompanyLink" onClick={handleToggle}>
-      <div className="SchoolCompanyImg"></div>
-      <div className="SchoolCompanyName">我是名字我是名字</div>
-      <div className="SchoolCompanyContent">创新型公司</div>
-      <div className="SchoolCompanyToLink"><KeyboardArrowRightIcon style={{ fontSize: 30, color:"#5C84D2" }}/></div>
+    <div className="SchoolProjectLink" onClick={handleToggle}>
+      <div className="SchoolProjectImg"></div>
+      <div className="SchoolProjectName">我是名字我是名字</div>
+      <div className="SchoolProjectContent">我是内容我是内容我是内容我是内容我是内容我是内容</div>
+      <div className="SchoolProjectToLink"><KeyboardArrowRightIcon style={{ fontSize: 30, color:"#FFAE12" }}/></div>
     </div>
       <Backdrop className={classes.backdrop} open={open}>
-        <div className="schoolCompanyPage">
+        <div className="schoolProjectPage">
           111
-          <div className="schoolCompanyPageImg"></div>
-          <div className="schoolCompanyPageName">我是名字我是名字</div>
-          <div className="schoolCompanyPageContent">创新型公司</div>
-          <div className="schoolCompanyPageLongContent">公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介
+          <div className="schoolProjectPageImg"></div>
+          <div className="schoolProjectPageName">我是名字我是名字</div>
+          <div className="schoolProjectPageContent">我是内容我是内容我是内容我是内容我是内容我是内容</div>
+          <div className="schoolProjectPageLongContent">公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介
 公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介
 公司简介公司简介公司简介公司简介公司简介公司简介。公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介
 公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介
@@ -134,20 +133,17 @@ export function SchoolCompanyLink(history) {
 公司简介公司简介公司简介公司简介公司简介公司简介。
 
 </div>
-          <div className="schoolCompanyPageEmail">baidu@qq.com</div>
-          <div className="schoolCompanyPagePhone1">0731-86273728</div>
-          <div className="schoolCompanyPagePhone2">15200000001</div>
-          <div className="schoolCompanyPageLocation">湖北省武汉市珞喻路1037号华中科技大学</div>
-          <div className="schoolCompanyPageLine"></div>
-          <div className="schoolCompanyPageEmail">baidu@qq.com</div>
-          <div className="schoolCompanyPagePhone1">0731-86273728</div>
-          <div className="schoolCompanyPagePhone2">15200000001</div>
-          <div className="schoolCompanyPageLocation">湖北省武汉市珞喻路1037号华中科技大学</div>
-          <div className="schoolCompanyPageMailIcon"><MailIcon color="disabled" /></div>
-          <div className="schoolCompanyPagePhoneIcon"><PhoneIcon color="disabled" /></div>
-          <div className="schoolCompanyPageStayPrimaryPortraitIcon"><StayPrimaryPortraitIcon color="disabled" /></div>
-          <div className="schoolCompanyPageLocationOnIcon"><LocationOnIcon color="disabled" /></div>
-          <div className="schoolCompanyPageCloseIcon" onClick={handleClose}><CloseIcon style={{ color: 'white', fontSize: 42 }}/></div>
+          <div className="schoolProjectPageEmail">baidu@qq.com</div>
+          <div className="schoolProjectPagePhone1">0731-86273728</div>
+          <div className="schoolProjectPagePhone2">15200000001</div>
+          <div className="schoolProjectPageLine"></div>
+          <div className="schoolProjectPageEmail">baidu@qq.com</div>
+          <div className="schoolProjectPagePhone1">0731-86273728</div>
+          <div className="schoolProjectPagePhone2">15200000001</div>
+          <div className="schoolProjectPageMailIcon"><MailIcon color="disabled" /></div>
+          <div className="schoolProjectPagePhoneIcon"><PhoneIcon color="disabled" /></div>
+          <div className="schoolProjectPageStayPrimaryPortraitIcon"><StayPrimaryPortraitIcon color="disabled" /></div>
+          <div className="schoolProjectPageCloseIcon" onClick={handleClose}><CloseIcon style={{ color: 'white', fontSize: 42 }}/></div>
 
         </div>
       </Backdrop>
@@ -157,4 +153,4 @@ export function SchoolCompanyLink(history) {
 
 
 
-export default withRouter(SchoolCompanyMain);
+export default withRouter(SchoolProjectMain);

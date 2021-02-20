@@ -24,10 +24,11 @@ import {
 import axios from 'axios';
 import qs from 'qs';
 
-import './index.css';
+import './indexHomepage.css';
 import FirstPage from './FirstPage';
 import SchoolCompany from './SchoolCompany';
-import MyPosting from './MyPosting';
+import SchoolProject from './SchoolProject';
+
 
 
 let myselfState = 0;
@@ -101,7 +102,7 @@ class HomePageFrontName extends React.Component {
       HomePageFrontNameShowBox = HomePageFrontNameHiddenBox(this.props.history);
     }
   return (
-    <div>
+    <div onClick={this.NameClick}>
       <a className="HomePageFrontName" onClick={this.NameClick}>
         {this.props.myselfName}
       </a>
@@ -114,11 +115,23 @@ class HomePageFrontName extends React.Component {
 export function HomePageFrontNameHiddenBox(history) {
   return (
     <div className="HomePageFrontNameHiddenBox">
-      <a id="HomePageFrontNameHiddenBoxExit"
+      <div id="HomePageFrontNameHiddenBoxMyHomePage"
+        onClick={() => {history.push("/home/homespace")}}
+        >
+        我的主页
+      </div>
+      <div id="HomePageFrontNameHiddenBoxManage"
+        onClick={() => {history.push("/home/manage")}}
+      >
+        管理组织
+      </div>
+      <div className="HomePageFrontNameHiddenBoxLine"></div>
+      <div id="HomePageFrontNameHiddenBoxExit"
         onClick={() => {window.localStorage.removeItem('token');history.go(0)}}
       >
         退出登录
-      </a>
+      </div>
+
     </div>
   );
 }
@@ -165,7 +178,7 @@ export function SimpleTabs(props) {
   }
 
   const classes = useStyles();
-  const [value, setValue] = React.useState(1);
+  const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -189,7 +202,7 @@ export function SimpleTabs(props) {
 
   return (
     <div className={classes.root}>
-
+      {HomePageFrontNameHiddenBox}
       <div className="HomeHeaderLogo" />
       <AppBar position="static" style={styleTabs}>
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example" style={styleTabs}>
@@ -200,13 +213,13 @@ export function SimpleTabs(props) {
       </AppBar>
       <TabPanel value={value} index={0}>
         <FirstPage />
-        {HomePageFrontNameHiddenBox}      
+              
       </TabPanel>
       <TabPanel value={value} index={1}>
         <SchoolCompany />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <SchoolProject />
       </TabPanel>
 
       
@@ -223,8 +236,7 @@ export function homeMain(props) {
   return(
     <div>
       <Switch>
-        <Route path="/home/homepage">{SimpleTabs(props)}</Route>
-        <Route path="/home/schoolcompany">{SimpleTabs(props)}</Route>
+        <Route path="/home">{SimpleTabs(props)}</Route>
         <Route exact path="/">{SimpleTabs(props)}</Route>
 
       </Switch>

@@ -4,7 +4,7 @@ import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import Pagination from '@material-ui/lab/Pagination';
 import TextsmsIcon from '@material-ui/icons/Textsms';
-import './index.css';
+import './indexHomepage.css';
 import axios from 'axios';
 import qs from 'qs';
 

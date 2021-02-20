@@ -26,7 +26,7 @@ import { AxiosProvider, Request, Get, Delete, Head, Post, Put, Patch, withAxios 
 import axios from 'axios';
 import qs from 'qs';
 
-import '../index.css';
+import '../indexLoad.css';
 import { red } from '@material-ui/core/colors';
 import { ThreeSixty } from '@material-ui/icons';
 import { ButtonGroup } from '@material-ui/core';
