@@ -8,6 +8,7 @@ import FaceIcon from '@material-ui/icons/Face';
 import HomePagePosting from './HomeHomePagePosting';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
+import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import EditIcon from '@material-ui/icons/Edit';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import NavigationIcon from '@material-ui/icons/Navigation';
@@ -51,6 +52,7 @@ export function firstPageMain(props) {
   return(
     <div>
       {GetFirstPage(props)}
+
       <Switch>
         <Route path="/home/homepage/posting"><MyPosting style={{padding:'0'}}/></Route>
         <Route exact path="/home/homepage/register">
@@ -85,7 +87,7 @@ const GetFirstPage=(props)=> {
     console.log(posts);
     let FirstPageChangeLoadBox,ToPostingHiddenBox;
     if (posts != "") {
-      FirstPageChangeLoadBox = FirstPageUserBox(posts.name);
+      FirstPageChangeLoadBox = FirstPageUserBox(posts.name,props.history);
       ToPostingHiddenBox = <ToPostingBox/>;
     } else {
       FirstPageChangeLoadBox = <FirstPageUnLoadBox/>;
@@ -143,7 +145,7 @@ export function ToPostingBox() {
   );
 }
 
-export function FirstPageUserBox(getmyselfName) {
+export function FirstPageUserBox(getmyselfName,history) {
   let OrganizationName ="华中科技大学";
   return (
     <div className="FirstPageUserBox">
@@ -163,13 +165,16 @@ export function FirstPageUserBox(getmyselfName) {
         <div className="FirstPageUserOrganizationList">
           {FirstPageUserOrganization(OrganizationName)}
           {FirstPageUserOrganization(OrganizationName)}
+          {FirstPageUserOrganization(OrganizationName)}
         </div>
+        {/* 
         <div className="FirstPageUserOrganizationJoinBox">
-          <div className="FirstPageUserOrganizationJoinImg"></div>
-          <div className="FirstPageUserOrganizationJoin">
+          <GroupAddIcon color="action" style={{ fontSize: 27 }}/>
+          <div className="FirstPageUserOrganizationJoin" onClick={()=>history.push("/home/homepage/")}>
             申请加入组织
           </div>
         </div>
+        */}
       </div>
     </div>
   );

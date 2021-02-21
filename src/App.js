@@ -47,7 +47,7 @@ function IndexBackground() {
 export default function App() {
   return (
     
-    <Router>
+    <Router forceRefresh={true}>
     <div>
       <Switch>
         <Route path="/load"><LoadBasicTextFields /><IndexBackground /></Route>

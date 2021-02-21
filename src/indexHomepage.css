@@ -211,14 +211,10 @@ html, body {
   color:#2D2D2D;
 }
 .FirstPageUserBoxOrganizationBox{
-  margin: 0 0 30px 16px;
+  margin: 0 0 30px 23px;
   width: 333px;
   left: 16px;
   overflow:hidden;
-
-
-
-
 }
 .FirstPageUserOrganizationHeader{
   margin: 17px 0 0 0;
@@ -251,11 +247,23 @@ html, body {
 .FirstPageUserOrganization{
   margin: 10px 0 0 0;
 }
-.FirstPageUserOrganization:hover{
-  cursor: pointer;
+
+
+.FirstPageUserOrganizationJoinBox{
+  width: 333px;
+  left: 16px;
+  overflow:hidden;
+}
+.FirstPageUserOrganizationJoin{
+  display: inline-block;
+  position: relative;
+  left: 15px;
+  bottom: 8px;
 }
 
-
+.FirstPageUserOrganizationJoin:hover{
+  cursor: pointer;
+}
 
 
 .MessageBox{
@@ -357,7 +365,7 @@ html, body {
   width: 150px;
   height: 65px;
   left: calc(10% + 850px);
-  top: 459px;
+  top: 510px;
 }
 .ToPostingBoxText{
   color:#626262;
@@ -372,7 +380,7 @@ html, body {
 .HomePageWriterBox{
   position: fixed;
   width: 365px;
-  height: 100px;
+  height: 131px;
   left: calc(10% + 830px);
   top: 123px;
   background: #FFFFFF;
@@ -380,19 +388,71 @@ html, body {
   border-radius: 4px;
 }
 #HomePageWriterBoxName{
-  width: 100px;
   position: absolute;
-  left: 132px;
-  top: 30px;
-  text-align: center;
+  left: 150px;
+  top: 41px;
   font-family: Microsoft YaHei UI;
   font-style: normal;
   font-weight: normal;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 157%;
   letter-spacing: 0.1px;
   color:#2D2D2D;
 }
+#HomePageWriterBoxSignature{
+  position: absolute;
+  left: 150px;
+  top: 75px;
+  text-align: center;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color: #626262;
+}
+.HomePageRegonizationBox{
+  position: fixed;
+  width: 365px;
+  height: 131px;
+  left: calc(10% + 830px);
+  top: 298px;
+  background: #FFFFFF;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+}
+.HomePageRegonizationBox:hover{
+  cursor: pointer;
+}
+#HomePageRegonizationBoxName{
+  position: absolute;
+  left: 150px;
+  top: 41px;
+  text-align: center;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color:#2D2D2D;
+}
+#HomePageRegonizationBoxSignature{
+  position: absolute;
+  left: 150px;
+  top: 75px;
+  text-align: center;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color: #626262;
+}
+
+
 .HomePagePostingHeader{
   margin: 8px 1px;
   padding: 0 0 10px 0;
@@ -427,7 +487,7 @@ html, body {
 .HomePagePostingText{
   margin: 38px 1px;
   padding: 0 0 48px 0;
-  /*border-bottom: 1px solid #E0E0E0;*/
+  border-bottom: 1px solid #E0E0E0;
 }
 .HomePagePostingTextContent{
   font-family: Microsoft YaHei UI;
@@ -445,9 +505,44 @@ html, body {
   word-break:break-all;
   word-wrap:break-word; 
 }
+.HomePagePostingCommentTime{
+  position: relative;
+  top: 13px;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color: #B9B9B9;
+}
+.HomePagePostingMyCommentBox{
+  height: 300px;
+  margin: 20px 0; 
 
+}
+.HomePagePostingMyCommentBoxHeader{
+  margin: 10px 10px;
+}
+.HomePagePostingMyCommentBoxHeaderText{
+  display: inline-block;
+  position: relative;
+  left: 15px;
+  bottom: 8px; 
 
-
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14.5px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color: #626262;
+}
+.HomePagePostingMyCommentBoxButton{
+  position: relative;
+  left: 8px;
+  float: right;
+}
 
 /**************************** My Posting *******************************/
 .MyPostingMainCloseIcon{

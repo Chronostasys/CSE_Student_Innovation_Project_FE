@@ -235,12 +235,11 @@ export function SimpleTabs(props) {
 export function homeMain(props) {
   return(
     <div>
-      <Switch>
-        <Route path="/home">{SimpleTabs(props)}</Route>
-        <Route exact path="/">{SimpleTabs(props)}</Route>
+        <Switch>
+          <Route path="/home">{SimpleTabs(props)}</Route>
+          <Route exact path="/">{SimpleTabs(props)}</Route>
 
-      </Switch>
-
+        </Switch>
 
       
     </div>

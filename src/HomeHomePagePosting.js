@@ -1,9 +1,16 @@
 import React,{ useState,useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import Pagination from '@material-ui/lab/Pagination';
 import TextsmsIcon from '@material-ui/icons/Textsms';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import CheckIcon from '@material-ui/icons/Check';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import TextField from '@material-ui/core/TextField';
 import './indexHomepage.css';
 import axios from 'axios';
 import qs from 'qs';
@@ -28,6 +35,12 @@ const useStyles = makeStyles((theme) => ({
     '& > *': {
       marginTop: theme.spacing(2),
     },
+  },
+}));
+
+const CommentBoxButtonuseStyles = makeStyles((theme) => ({
+  button: {
+    margin: theme.spacing(1),
   },
 }));
 
@@ -70,6 +83,7 @@ const PostAllData=()=> {
       <div>
         {SimpleContainer(posts.title,posts.content,theTime)}
         {HomePageWriterBox(posts.author_name)}
+        {HomePageRegonizationBox()}
       </div>
     );
   }else {
@@ -88,6 +102,17 @@ export function HomePageWriterBox(author_name) {
     <div className="HomePageWriterBox">
       <div id="HomePageWriterBoxImg"></div>
       <div id="HomePageWriterBoxName">{author_name}</div>
+      <div id="HomePageWriterBoxSignature">个性签名</div>
+    </div>
+  );
+}
+
+export function HomePageRegonizationBox() {
+  return (
+    <div className="HomePageRegonizationBox">
+      <div id="HomePageRegonizationBoxImg"></div>
+      <div id="HomePageRegonizationBoxName">xxxx项目</div>
+      <div id="HomePageRegonizationBoxSignature">互联网   人工智能</div>
     </div>
   );
 }
@@ -99,12 +124,11 @@ export function SimpleContainer(title,content,publish_time) {
       <Container maxWidth="sm" style={{backgroundColor:'white'}}>
         <Typography style={{ width:'657px',position:'absolute', left:'calc(8% + 88px)',top:"103px",zIndex:"5000"}} >
         {HomePagePostingMain(title,content,publish_time)}
-        {/*<AlignItemsCommentList/>
-        <HomePagePostingMyCommentBox/>*/}
+        <AlignItemsCommentList/>
+        <HomePagePostingMyCommentBox/>
         </Typography>
       </Container>
     </React.Fragment>
-    {/*<div style={{position:'absolute', left:'616px',top:"675px"}}><BasicPagination/></div>*/}
     </div>
   );
 }
@@ -126,37 +150,66 @@ export function HomePagePostingMain(title,content,publish_time) {
 }
 
 export function HomePagePostingMyCommentBox() {
+  const Buttonclasses = CommentBoxButtonuseStyles();
+
   return (
-    <div>
+    <div className="HomePagePostingMyCommentBox">
       <div className="HomePagePostingMyCommentBoxHeader">
-        <div><TextsmsIcon/></div>
+        <TextsmsIcon color="disabled" />
+        <div className="HomePagePostingMyCommentBoxHeaderText">发布评论</div>    
       </div>
-      <div className="HomePagePostingMyCommentTextBox"></div>
-      <div className="HomePagePostingMyCommentBoxButton"></div>
+      <div className="HomePagePostingMyCommentTextBox">{StateTextFields()}</div>
+      <div className="HomePagePostingMyCommentBoxButton">
+        <Button
+          variant="contained"
+          color="default"
+          className={Buttonclasses.button}
+          startIcon={<CheckIcon />}
+        >
+          发送
+        </Button>
+      </div>
 
     </div>
   );
 }
 
+const CommentTextFielduseStyles = makeStyles((theme) => ({
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: '650px',
+    },
+  },
+}));
+
+export function StateTextFields() {
+  const classes = CommentTextFielduseStyles();
+  const [Textvalue, setName] = React.useState('');
+  const handleChange = (event) => {
+    setName(event.target.value);
+  };
+
+  return (
+    <form className={classes.root} noValidate autoComplete="off">
+      <div>
+        <TextField
+            id="filled-multiline-static"
+            className="MyCommentText"
+            multiline
+            rows={7}
+            defaultValue="Default Value"
+            variant="outlined"
+            value={Textvalue}
+            onChange={handleChange}  
+          />
+        </div>
+
+    </form>
+  );
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{/** 
 const useStylesCommentList = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -208,6 +261,7 @@ export function AlignItemsCommentList() {
           }
           style={{border:'none'}}
         />
+        <div className="HomePagePostingCommentTime">2022-02-08 21:39:43</div>
       </ListItem>
       <ListItem alignItems="flex-start">
         <ListItemText
@@ -235,36 +289,10 @@ export function AlignItemsCommentList() {
             </React.Fragment>
           }
         />
-      </ListItem>
-      <ListItem alignItems="flex-start">
-        <ListItemText
-          primary={
-            <React.Fragment>
-              <Typography
-                component="span"
-                variant="body2"
-                className={classes.commentname}
-              >
-                张三AAA
-              </Typography>
-            </React.Fragment>
-          }
-          secondary={
-            <React.Fragment>
-              <Typography
-                component="span"
-                variant="body2"
-                className={classes.inline}
-              >
-                写的不错DAAA啊AAAAAAAAAAAAAAAAAAAA
-              </Typography>
-            </React.Fragment>
-          }
-          style={{border:'none'}}
-        />
+        <div className="HomePagePostingCommentTime">2022-02-08 21:39:43</div>
       </ListItem>
     </List>
   );
 }
 
-**/}
+
