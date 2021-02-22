@@ -8,6 +8,9 @@ import TextsmsIcon from '@material-ui/icons/Textsms';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import CheckIcon from '@material-ui/icons/Check';
+import MailIcon from '@material-ui/icons/Mail';
+import PhoneIcon from '@material-ui/icons/Phone';
+import StayPrimaryPortraitIcon from '@material-ui/icons/StayPrimaryPortrait';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import TextField from '@material-ui/core/TextField';
@@ -82,8 +85,8 @@ const PostAllData=()=> {
     return (
       <div>
         {SimpleContainer(posts.title,posts.content,theTime)}
-        {HomePageWriterBox(posts.author_name)}
-        {HomePageRegonizationBox()}
+        {HomePagePostingWriterBox(posts.author_name)}
+        <HomePageRegonizationBox/>
       </div>
     );
   }else {
@@ -97,7 +100,7 @@ export default PostAllData;
 
 
 
-export function HomePageWriterBox(author_name) {
+export function HomePagePostingWriterBox(author_name) {
   return (
     <div className="HomePageWriterBox">
       <div id="HomePageWriterBoxImg"></div>
@@ -107,14 +110,46 @@ export function HomePageWriterBox(author_name) {
   );
 }
 
-export function HomePageRegonizationBox() {
+class HomePageRegonizationBox extends React.Component {
+  constructor(props) {
+    super(props);
+    this.RegonizationBoxClick = this.RegonizationBoxClick.bind(this);
+    this.state = {      
+      HiddenBoxdisplay: 0, 
+    };
+  }
+
+  RegonizationBoxClick() {
+    const theRegonizationBoxClick = this.state.HiddenBoxdisplay;
+    this.setState({HiddenBoxdisplay: !theRegonizationBoxClick});  
+  }
+  render() {
+    let HomePageRegonizationHiddenBoxJudge;
+    if ( this.state.HiddenBoxdisplay ) {
+      HomePageRegonizationHiddenBoxJudge = 
+        <div className="HomePageRegonizationHiddenBox">
+          <div className="HomePageRegonizationHiddenBoxEmail">baidu@qq.com</div>
+          <div className="HomePageRegonizationHiddenBoxPhone1">0731-86273728</div>
+          <div className="HomePageRegonizationHiddenBoxPhone2">15200000001</div>
+          <div className="HomePageRegonizationHiddenBoxMailIcon"><MailIcon color="action" /></div>
+          <div className="HomePageRegonizationHiddenBoxPhoneIcon"><PhoneIcon color="action" /></div>
+          <div className="HomePageRegonizationHiddenBoxStayPrimaryPortraitIcon"><StayPrimaryPortraitIcon color="action" /></div>
+          
+        </div>
+    }else{
+      HomePageRegonizationHiddenBoxJudge = null;
+    }
   return (
-    <div className="HomePageRegonizationBox">
-      <div id="HomePageRegonizationBoxImg"></div>
-      <div id="HomePageRegonizationBoxName">xxxx项目</div>
-      <div id="HomePageRegonizationBoxSignature">互联网   人工智能</div>
+    <div>
+      <div className="HomePageRegonizationBox" onClick={this.RegonizationBoxClick}>
+        <div id="HomePageRegonizationBoxImg"></div>
+        <div id="HomePageRegonizationBoxName">xxxx项目</div>
+        <div id="HomePageRegonizationBoxSignature">互联网人工智能互联网人工智</div>
+      </div> 
+      {HomePageRegonizationHiddenBoxJudge} 
     </div>
-  );
+    );
+  }
 }
 
 export function SimpleContainer(title,content,publish_time) {

@@ -17,6 +17,7 @@ import RegisterPage from './loadpage/Register';
 import axios from 'axios';
 import qs from 'qs';
 
+import myhomespace from './myhomespace';
 import MyPosting from './MyPosting';
 import './indexHomepage.css';
 
@@ -52,8 +53,8 @@ export function firstPageMain(props) {
   return(
     <div>
       {GetFirstPage(props)}
-
       <Switch>
+        <Route exact path="/home/homespace">{myhomespace}</Route>
         <Route path="/home/homepage/posting"><MyPosting style={{padding:'0'}}/></Route>
         <Route exact path="/home/homepage/register">
           <RegisterPage />
@@ -198,28 +199,11 @@ export function FirstPageUnLoadBox() {
 }
 
 export function SimpleContainer(thepage,history) {
-  const [posts, setPosts]=useState([])
-  const getPosts = async () => {
-    try {
-    const userPosts = await   axios({
-      method: 'get',
-      url: 'http://101.200.227.216:8080/api/blog/getBlogNumber',
-      headers: {
-        token: localStorage.getItem('token'),
-      },
-    })
-      setPosts(userPosts.data);  // set State
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
-  useEffect(()=>{
-    getPosts()
-  },[])  // includes empty dependency array
+
     return (
     <div>
-    <React.Fragment>
-      <Container maxWidth="sm">
+    <React.Fragment style={{padding:"0"}}>
+      <Container maxWidth="sm" style={{padding:"0"}}>
         <Typography style={{  height: '576px',width:'857px',position:'absolute', left:'calc(5% + 28px)',top:"103px"}} >
           {PostList(thepage,0,history)}
           {PostList(thepage,1,history)}

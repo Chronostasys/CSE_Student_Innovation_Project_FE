@@ -30,7 +30,6 @@ import SchoolCompany from './SchoolCompany';
 import SchoolProject from './SchoolProject';
 
 
-
 let myselfState = 0;
 let myselfName = '';
 let myselfEmail = '';
@@ -236,7 +235,9 @@ export function homeMain(props) {
   return(
     <div>
         <Switch>
+
           <Route path="/home">{SimpleTabs(props)}</Route>
+
           <Route exact path="/">{SimpleTabs(props)}</Route>
 
         </Switch>

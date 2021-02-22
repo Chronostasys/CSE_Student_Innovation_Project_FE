@@ -137,16 +137,9 @@ export function SchoolCompanyLink(history) {
           <div className="schoolCompanyPageEmail">baidu@qq.com</div>
           <div className="schoolCompanyPagePhone1">0731-86273728</div>
           <div className="schoolCompanyPagePhone2">15200000001</div>
-          <div className="schoolCompanyPageLocation">湖北省武汉市珞喻路1037号华中科技大学</div>
-          <div className="schoolCompanyPageLine"></div>
-          <div className="schoolCompanyPageEmail">baidu@qq.com</div>
-          <div className="schoolCompanyPagePhone1">0731-86273728</div>
-          <div className="schoolCompanyPagePhone2">15200000001</div>
-          <div className="schoolCompanyPageLocation">湖北省武汉市珞喻路1037号华中科技大学</div>
           <div className="schoolCompanyPageMailIcon"><MailIcon color="disabled" /></div>
           <div className="schoolCompanyPagePhoneIcon"><PhoneIcon color="disabled" /></div>
           <div className="schoolCompanyPageStayPrimaryPortraitIcon"><StayPrimaryPortraitIcon color="disabled" /></div>
-          <div className="schoolCompanyPageLocationOnIcon"><LocationOnIcon color="disabled" /></div>
           <div className="schoolCompanyPageCloseIcon" onClick={handleClose}><CloseIcon style={{ color: 'white', fontSize: 42 }}/></div>
 
         </div>

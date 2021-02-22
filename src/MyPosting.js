@@ -13,6 +13,11 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import TextsmsIcon from '@material-ui/icons/Textsms';
 import TextField from '@material-ui/core/TextField';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 import CancelIcon from '@material-ui/icons/Cancel';
 import CloseIcon from '@material-ui/icons/Close';
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
@@ -46,7 +51,18 @@ const ButtonuseStyles = makeStyles((theme) => ({
     },
   },
 }));
-
+const PostingContentuseStyles = makeStyles((theme) => ({
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: '687px',
+    },
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 182,
+  },
+}));
 
 export function SimpleContainer(props) {
   const classes = PostingContentuseStyles();
@@ -58,6 +74,12 @@ export function SimpleContainer(props) {
   const TextvaluehandleChange = (event) => {
     TextsetValue(event.target.value);
   };
+  const [age, setAge] = React.useState('');
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
+
   const handleSubmit = () => {
     console.log(123131313412);
     axios({
@@ -99,6 +121,25 @@ export function SimpleContainer(props) {
           value={Headervalue}
           onChange={HeadervaluehandleChange}
         />
+
+        <FormControl variant="outlined" className={classes.formControl}>
+          <InputLabel id="demo-simple-select-outlined-label">Age</InputLabel>
+          <Select
+            labelId="demo-simple-select-outlined-label"
+            id="demo-simple-select-outlined"
+            value={age}
+            onChange={handleChange}
+            label="Age"
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
+          </Select>
+        </FormControl>
+
         <div style={{margin:'20px 0'}}>
           <TextField
             id="filled-multiline-static"
@@ -153,14 +194,7 @@ export function MyPostingMainFinishIcon(props,Headervalue,Textvalue) {
   });
 }
 
-const PostingContentuseStyles = makeStyles((theme) => ({
-  root: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: '687px',
-    },
-  },
-}));
+
 
 
 
