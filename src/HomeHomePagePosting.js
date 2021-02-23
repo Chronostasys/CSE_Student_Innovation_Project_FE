@@ -86,7 +86,7 @@ const PostAllData=()=> {
       <div>
         {SimpleContainer(posts.title,posts.content,theTime)}
         {HomePagePostingWriterBox(posts.author_name)}
-        <HomePageRegonizationBox/>
+        <HomePageOrganizationBox/>
       </div>
     );
   }else {
@@ -110,43 +110,43 @@ export function HomePagePostingWriterBox(author_name) {
   );
 }
 
-class HomePageRegonizationBox extends React.Component {
+class HomePageOrganizationBox extends React.Component {
   constructor(props) {
     super(props);
-    this.RegonizationBoxClick = this.RegonizationBoxClick.bind(this);
+    this.OrganizationBoxClick = this.OrganizationBoxClick.bind(this);
     this.state = {      
       HiddenBoxdisplay: 0, 
     };
   }
 
-  RegonizationBoxClick() {
-    const theRegonizationBoxClick = this.state.HiddenBoxdisplay;
-    this.setState({HiddenBoxdisplay: !theRegonizationBoxClick});  
+  OrganizationBoxClick() {
+    const theOrganizationBoxClick = this.state.HiddenBoxdisplay;
+    this.setState({HiddenBoxdisplay: !theOrganizationBoxClick});  
   }
   render() {
-    let HomePageRegonizationHiddenBoxJudge;
+    let HomePageOrganizationHiddenBoxJudge;
     if ( this.state.HiddenBoxdisplay ) {
-      HomePageRegonizationHiddenBoxJudge = 
-        <div className="HomePageRegonizationHiddenBox">
-          <div className="HomePageRegonizationHiddenBoxEmail">baidu@qq.com</div>
-          <div className="HomePageRegonizationHiddenBoxPhone1">0731-86273728</div>
-          <div className="HomePageRegonizationHiddenBoxPhone2">15200000001</div>
-          <div className="HomePageRegonizationHiddenBoxMailIcon"><MailIcon color="action" /></div>
-          <div className="HomePageRegonizationHiddenBoxPhoneIcon"><PhoneIcon color="action" /></div>
-          <div className="HomePageRegonizationHiddenBoxStayPrimaryPortraitIcon"><StayPrimaryPortraitIcon color="action" /></div>
+      HomePageOrganizationHiddenBoxJudge = 
+        <div className="HomePageOrganizationHiddenBox">
+          <div className="HomePageOrganizationHiddenBoxEmail">baidu@qq.com</div>
+          <div className="HomePageOrganizationHiddenBoxPhone1">0731-86273728</div>
+          <div className="HomePageOrganizationHiddenBoxPhone2">15200000001</div>
+          <div className="HomePageOrganizationHiddenBoxMailIcon"><MailIcon color="action" /></div>
+          <div className="HomePageOrganizationHiddenBoxPhoneIcon"><PhoneIcon color="action" /></div>
+          <div className="HomePageOrganizationHiddenBoxStayPrimaryPortraitIcon"><StayPrimaryPortraitIcon color="action" /></div>
           
         </div>
     }else{
-      HomePageRegonizationHiddenBoxJudge = null;
+      HomePageOrganizationHiddenBoxJudge = null;
     }
   return (
     <div>
-      <div className="HomePageRegonizationBox" onClick={this.RegonizationBoxClick}>
-        <div id="HomePageRegonizationBoxImg"></div>
-        <div id="HomePageRegonizationBoxName">xxxx项目</div>
-        <div id="HomePageRegonizationBoxSignature">互联网人工智能互联网人工智</div>
+      <div className="HomePageOrganizationBox" onClick={this.OrganizationBoxClick}>
+        <div id="HomePageOrganizationBoxImg"></div>
+        <div id="HomePageOrganizationBoxName">xxxx项目</div>
+        <div id="HomePageOrganizationBoxSignature">互联网人工智能互联网人工智</div>
       </div> 
-      {HomePageRegonizationHiddenBoxJudge} 
+      {HomePageOrganizationHiddenBoxJudge} 
     </div>
     );
   }
