@@ -51,8 +51,8 @@ export function firstPageMain(props) {
     <div>
       {GetFirstPage(props)}
       <Switch>
-        <Route path="/Home/HomePage/Posting"><MyPosting style={{padding:'0'}}/></Route>
-        <Route exact path="/Home/HomePage/register">
+        <Route path="/home/homepage/posting"><MyPosting style={{padding:'0'}}/></Route>
+        <Route exact path="/home/homepage/register">
           <RegisterPage />
         </Route>
       </Switch>
@@ -93,8 +93,8 @@ const GetFirstPage=(props)=> {
       return(
       <div>
       <Switch>
-        <Route path={`/Home/HomePage/:ID`}><HomePagePosting/></Route>
-        <Route exact path="/Home/HomePage">
+        <Route path={`/home/homepage/:ID`}><HomePagePosting/></Route>
+        <Route exact path="/home/homepage">
           {PaginationControlled(props.history)}
           {FirstPageChangeLoadBox}
           {ToPostingHiddenBox}
@@ -190,8 +190,8 @@ export function FloatingActionButtons() {
 export function ToPostingBox() {
   return (
     <div className="ToPostingBox">
-      <Link to="/Home/HomePage/Posting"><FloatingActionButtons/></Link>
-      <Link to="/Home/HomePage/Posting" className="ToPostingBoxText">我要发帖</Link>
+      <Link to="/home/homepage/posting"><FloatingActionButtons/></Link>
+      <Link to="/home/homepage/posting" className="ToPostingBoxText">我要发帖</Link>
     </div>
   );
 }
@@ -211,8 +211,8 @@ export function FirstPageUnLoadBox() {
     <div className="FirstPageUnLoadBox">
       <FaceIcon style={{height: '54px',width:'54px',position:'absolute', left:'156px',top:"26px", opacity:'0.7'}}/>
       <div id="FirstPageUnLoadBoxText">您还未登录哦</div>
-      <Link to={"/Load"} id="FirstPageUnLoadBoxLoadLink">登录</Link>
-      <Link to={"/Home/HomePage/register"} id="FirstPageUnLoadBoxRegisterLink">免费注册</Link>
+      <Link to={"/load"} id="FirstPageUnLoadBoxLoadLink">登录</Link>
+      <Link to={"/home/homepage/register"} id="FirstPageUnLoadBoxRegisterLink">免费注册</Link>
     </div>
   );
 }
@@ -355,7 +355,7 @@ const PostList=(page,index,history)=> {
       let publish_times = posts.msg[index].publish_time.substring(0, 19);
       let author_names = posts.msg[index].author_name; 
       return(
-    <div className="MessageBox" onClick={()=>history.push("/Home/HomePage/"+blogsIDs)}>
+    <div className="MessageBox" onClick={()=>history.push("/home/homepage/"+blogsIDs)}>
       <div className="MessageBoxHeader">
         {titles}
       </div>
