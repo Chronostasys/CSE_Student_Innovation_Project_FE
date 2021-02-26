@@ -159,7 +159,7 @@ class ForgeKeyword extends React.Component {
     })
     .then((response) => {
       this.setState({NewKeywordJudge: 'T'});
-      this.props.history.push("/Load");
+      this.props.history.push("/load");
       console.log(1);
     })
     .catch((error) => {
@@ -250,7 +250,7 @@ class BackKeywordBox1 extends React.Component {
         <div id="BackKeywordBox1Header">找回密码</div>
         <div id="BackKeywordBox1TextField">{TextFieldBackKeywordBox1}</div>
         <div onClick={this.handleForgeKeywordClick1}><BackKeywordBox1Button/></div>
-        <Link to={"/Load"} id="RegisterBoxCloseLoadLink" ><CloseIcon fontSize="large" style={{position:'absolute', left:'380px', top:'8px', zIndex:'3000'}}/></Link>
+        <Link to={"/load"} id="RegisterBoxCloseLoadLink" ><CloseIcon fontSize="large" style={{position:'absolute', left:'380px', top:'8px', zIndex:'3000'}}/></Link>
       </div>
     );
   }
@@ -336,7 +336,7 @@ class BackKeywordBox2 extends React.Component {
         <div onClick={this.BackKeywordBox2postVerificationCode}>{BackKeywordBox2getVerificationCodeLink}</div>
         <div id="BackKeywordBox1TextField">{TextFieldBackKeywordBox2}</div>
         <div onClick={this.handleForgeKeywordClick2}><BackKeywordBox2Button/></div>
-        <Link to={"/Load"} id="RegisterBoxCloseLoadLink" ><CloseIcon fontSize="large" style={{position:'absolute', left:'380px', top:'8px', zIndex:'3000'}}/></Link>
+        <Link to={"/load"} id="RegisterBoxCloseLoadLink" ><CloseIcon fontSize="large" style={{position:'absolute', left:'380px', top:'8px', zIndex:'3000'}}/></Link>
       </div>
     );
   }
@@ -391,7 +391,7 @@ class BackKeywordBox3 extends React.Component {
         <div id="BackKeywordBox3TextField1">{TextFieldBackKeywordBox31}</div>
         <div id="BackKeywordBox3TextField2">{TextFieldBackKeywordBox32}</div>
         <div onClick={this.handleForgeKeywordClick3}><BackKeywordBox3Button/></div>
-        <Link to={"/Load"} id="RegisterBoxCloseLoadLink" ><CloseIcon fontSize="large" style={{position:'absolute', left:'380px', top:'8px', zIndex:'3000'}}/></Link>
+        <Link to={"/load"} id="RegisterBoxCloseLoadLink" ><CloseIcon fontSize="large" style={{position:'absolute', left:'380px', top:'8px', zIndex:'3000'}}/></Link>
       </div>
     );
   }

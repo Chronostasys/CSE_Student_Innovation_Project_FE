@@ -185,12 +185,12 @@ class RegisterPage extends React.Component {
         })
       })
       .then((response) => {
-        this.props.history.push("/Load/register/access");  
+        this.props.history.push("/load/register/access");  
         console.log(response);  
         console.log(1);
       })
       .catch((error) => {
-        this.props.history.push("/Load/register/false"); 
+        this.props.history.push("/load/register/false"); 
         console.log(error);   
         console.log(2);
       });
@@ -274,7 +274,7 @@ class RegisterPage extends React.Component {
           <div id="RegisterBox" style={{zIndex:"1500"}}>
             <div id="RegisterBoxHeader">欢迎注册</div>
             <div id="RegisterBoxHeadText">已有账户？</div>
-            <Link to={"/Load"} id="RegisterBoxLoadLink">点击登录</Link>
+            <Link to={"/load"} id="RegisterBoxLoadLink">点击登录</Link>
             <div id="TextFieldRegisterBoxUserNameBox">{TextFieldRegisterBoxUserName}</div>
             <div id="TextFieldRegisterBoxEmailBox">{TextFieldRegisterBoxEmail}</div>
             <div id="TextFieldRegisterBoxVerificationCodeBox">{TextFieldRegisterBoxVerificationCode}</div>
@@ -287,7 +287,7 @@ class RegisterPage extends React.Component {
             <div onClick={()=>this.props.history.go(-1)}><a id="RegisterBoxCloseLoadLink"><CloseIcon fontSize="large" style={{position:'absolute', left:'492px', top:'13px'}}/></a></div>
           </div>
       <Switch>
-        <Route exact path="/Load/register/false">
+        <Route exact path="/load/register/false">
           <div id="BackKeywordBox1" style={{zIndex:"1500"}}>
             <div id="BackKeywordBox1Header">验证码错误，请重新注册</div>
             <div onClick={() => this.props.history.go(-1) }> 
@@ -295,7 +295,7 @@ class RegisterPage extends React.Component {
             </div>
           </div>
         </Route>
-          <Route exact path="/Load/register/access">
+          <Route exact path="/load/register/access">
             <div id="BackKeywordBox1" style={{zIndex:"1500"}}>
               <div id="BackKeywordBox1Header">      注册成功</div>
               <div onClick={() => this.props.history.go(-2) }>      

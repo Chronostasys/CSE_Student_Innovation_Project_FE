@@ -78,12 +78,12 @@ class LoadBasicTextFields extends React.Component {
       })
       .then((response) => {
         localStorage.setItem('token', response.data.token);
-        this.props.history.push("/Home/HomePage"); 
+        this.props.history.push("/home/homepage"); 
         console.log(response);
         console.log(1);
       })
       .catch((error) => {
-        this.props.history.push("/Load/false");
+        this.props.history.push("/load/false");
         console.log(error);
         console.log(2);
       });;
@@ -120,17 +120,17 @@ class LoadBasicTextFields extends React.Component {
         <Box color="white" bgcolor="#6E99CB" width="137px" height="36px" top="290px" left="250px" clone>
           <Button variant="contained" color="primary"  href="#contained-buttons" onClick={this.handleLoadClick}>登录</Button>
         </Box>
-          <Link to="/Load/forgeKeyword" id="forgeKeywordLink">忘记密码</Link>
-          <Link to="/Load/register" id="registerLink">免费注册</Link>
+          <Link to="/load/forgekeyword" id="forgeKeywordLink">忘记密码</Link>
+          <Link to="/load/register" id="registerLink">免费注册</Link>
         </div>      
       <Switch>
-        <Route path="/Load/register">
+        <Route path="/load/register">
           <RegisterPage />
         </Route>
-        <Route path="/Load/forgeKeyword">
+        <Route path="/load/forgekeyword">
           <ForgeKeyword />
         </Route>
-        <Route exact path="/Load/false">
+        <Route exact path="/load/false">
           <div id="BackKeywordBox1" style={{zIndex:"1500"}}>
             <div id="BackKeywordBox1Header">邮箱或密码错误，请重新登录</div>
             <div onClick={ () => this.props.history.go(-1) }> 
