@@ -224,6 +224,24 @@ export function SimpleTabs(props) {
 
   );
 }
+export function homeMain(props) {
+  return(
+    <div>
+      <Switch>
+        <Route exact path="/Home/HomePage">{SimpleTabs(props)}</Route>
+        {/*<Route exact path="/Home/SchoolCompany">2</Route>
+        <Route exact path="/Home/Projects">3</Route>*/}
+        <Route exact path="/">{SimpleTabs(props)}</Route>
 
-export default withRouter(SimpleTabs);
+      </Switch>
+
+
+      
+    </div>
+  );
+}
+
+
+
+export default withRouter(homeMain);
 

@@ -13,6 +13,11 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import TextsmsIcon from '@material-ui/icons/Textsms';
 import TextField from '@material-ui/core/TextField';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 import CancelIcon from '@material-ui/icons/Cancel';
 import CloseIcon from '@material-ui/icons/Close';
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
@@ -38,6 +43,42 @@ import {
   useLocation,
   useParams
 } from "react-router-dom";
+
+const ButtonuseStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+    },
+  },
+}));
+const PostingContentuseStyles = makeStyles((theme) => ({
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: '687px',
+    },
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 182,
+  },
+}));
+
+export function SimpleContainer(props) {
+  const classes = PostingContentuseStyles();
+  const [Headervalue, HeadersetValue] = React.useState('');
+  const [Textvalue, TextsetValue] = React.useState('');
+  const HeadervaluehandleChange = (event) => {
+    HeadersetValue(event.target.value);
+  };
+  const TextvaluehandleChange = (event) => {
+    TextsetValue(event.target.value);
+  };
+  const [age, setAge] = React.useState('');
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
 
 
 const ButtonuseStyles = makeStyles((theme) => ({
@@ -129,6 +170,7 @@ export function SimpleContainer(props) {
               />
             </div>
           </form>
+
           <div className="MyPostingMainCloseIcon" onClick={()=>MyPostingMainCloseIcon(props)}><CloseIcon fontSize="small" style={{position:'relative',top:'12px',left:'12.5px',color: 'white'}}/></div>
             <div className="MyPostingMainFinishIcon" onClick={()=>MyPostingMainFinishIcon(props,Headervalue,Textvalue)}>
               <SendIcon fontSize="small" style={{position:'relative',top:'11.5px',left:'13.5px',color: 'white'}}/>
@@ -142,7 +184,7 @@ export function SimpleContainer(props) {
           <Route exact path="/"></Route>      
       </Switch>
     </div>
-    
+   
   );
 }
 
@@ -239,9 +281,6 @@ export function MyPostingMainCloseBoxFinishButtons() {
 }
 
 export default withRouter(SimpleContainer);
-
-
-
 
 {/* 
 export default function PostingMain() {

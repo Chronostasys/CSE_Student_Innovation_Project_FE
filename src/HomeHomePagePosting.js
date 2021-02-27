@@ -1,16 +1,8 @@
 import React,{ useState,useEffect } from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import Pagination from '@material-ui/lab/Pagination';
-import FaceIcon from '@material-ui/icons/Face';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import Divider from '@material-ui/core/Divider';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
 import TextsmsIcon from '@material-ui/icons/Textsms';
 import './index.css';
 import axios from 'axios';
@@ -47,54 +39,6 @@ export function BasicPagination() {
     </div>
   );
 }
-
-{/* 
-export default function Posting() {
-  let { ID } = useParams();
-  const [SimpleContainerT, setSimpleContainer] = useState(false);
-  const [blogsIDs, setblogsIDs] = React.useState('');
-  const [titles, settitles] = React.useState('');
-  const [contents, setcontents] = React.useState('');
-  const [author_names, setauthor_names] = React.useState('');
-  const [publish_times, setpublish_times] = React.useState('');
-  const theURL = 'http://101.200.227.216:8080/api/blog/detail/'+(ID);
-
-  axios({
-    method: 'get',
-    url: theURL,
-    headers: {
-      token: localStorage.getItem('token'),
-    },
-  })
-  .then((response) => {
-    setblogsIDs(response.data.blog_id);
-    settitles(response.data.title);
-    setcontents(response.data.content);
-    setauthor_names(response.data.author_name);
-    const nowTime = response.data.publish_time;
-    let theNowTime = nowTime.substring(0, 19);
-    setpublish_times(theNowTime);
-
-    setSimpleContainer(true);
-  })
-  .catch((error) => {
-    setSimpleContainer(false);
-    setblogsIDs('');
-    settitles('');
-    setcontents('');
-    setauthor_names('');
-    setpublish_times('');
-  })
-
-  return (
-    <div>
-      <PostAllData/>
-      {SimpleContainer(titles,contents,publish_times)}
-      {HomePageWriterBox(author_names)}
-      
-    </div>
-  );
-}*/}
 
 const PostAllData=()=> {
   const [posts, setPosts]=useState([])

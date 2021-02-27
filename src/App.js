@@ -53,9 +53,7 @@ export default function App() {
         <Route path="/load"><LoadBasicTextFields /><IndexBackground /></Route>
         <Route path="/home"><Home /></Route>
         <Route exact path="/"></Route>
-
       </Switch>
-
     </div>
     </Router>
   );
