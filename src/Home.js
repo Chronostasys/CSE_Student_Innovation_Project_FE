@@ -192,7 +192,7 @@ export function SimpleTabs(props) {
       <div className="HomeHeaderLogo" />
       <AppBar position="static" style={styleTabs}>
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example" style={styleTabs}>
-          <Tab label="首页" {...a11yProps(0)} style={styleTab1} onClick={()=>props.history.push("/Home/HomePage")}/>
+          <Tab label="首页" {...a11yProps(0)} style={styleTab1} onClick={()=>props.history.push("/home/homePage")}/>
           {/*<Tab label="校园企业" {...a11yProps(1)} style={styleTab2} onClick={()=>props.history.push("/Home/SchoolCompany")}/>
           <Tab label="大创项目" {...a11yProps(2)} style={styleTab3} onClick={()=>props.history.push("/Home/Projects")}/>*/}
         </Tabs>
@@ -206,6 +206,13 @@ export function SimpleTabs(props) {
       <TabPanel value={value} index={2}>
         Item Three
       </TabPanel>*/}
+      <Switch>
+        <Route exact path="/home/homePage"></Route>
+        {/*<Route exact path="/Home/SchoolCompany">2</Route>
+        <Route exact path="/Home/Projects">3</Route>*/}
+        <Route exact path="/"></Route>
+
+      </Switch>
 
       {HomePageFrontNameHiddenBox}
       
