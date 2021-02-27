@@ -50,10 +50,12 @@ export default function App() {
     <Router>
     <div>
       <Switch>
-        <Route path="/load"><LoadBasicTextFields /><IndexBackground /></Route>
-        <Route path="/home"><Home /></Route>
-        <Route exact path="/"></Route>
+        <Route path="/Load"><LoadBasicTextFields /><IndexBackground /></Route>
+        <Route path="/Home"><Home /></Route>
+        <Route exact path="/"><Home /></Route>
+
       </Switch>
+
     </div>
     </Router>
   );

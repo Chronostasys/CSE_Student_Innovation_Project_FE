@@ -81,110 +81,70 @@ export function SimpleContainer(props) {
   };
 
 
-const ButtonuseStyles = makeStyles((theme) => ({
-  root: {
-    '& > *': {
-      margin: theme.spacing(1),
-    },
-  },
-}));
-const PostingContentuseStyles = makeStyles((theme) => ({
-  root: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: '687px',
-    },
-  },
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 182,
-  },
-}));
-
-
-
-export function SimpleContainer(props) {
-  const classes = PostingContentuseStyles();
-  const [Headervalue, HeadersetValue] = React.useState('');
-  const [Textvalue, TextsetValue] = React.useState('');
-  const HeadervaluehandleChange = (event) => {
-    HeadersetValue(event.target.value);
-  };
-  const TextvaluehandleChange = (event) => {
-    TextsetValue(event.target.value);
-  };
-  const [age, setAge] = React.useState('');
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
-
   return (
     <div style={{margin:'-24px -24px',width:"calc(100% + 48px)", backgroundColor:"rgba(38, 59, 100, 0.16)",height:'1100px'}}>
-      <div style={{width:'800px',height:'65px',position:'absolute',zIndex:"5000",top:'0'}}></div>
-      <React.Fragment>
-        <CssBaseline />
-        <Container maxWidth="sm">
-          <Typography component="div" style={{backgroundColor:'#fff',height:'1040px',width:'809px',padding:'44px 59px 0 59px',position:'absolute',top:'86px',left:'calc(50% - 404px)'}} >
+    <div style={{width:'800px',height:'65px',position:'absolute',zIndex:"5000",top:'0'}}></div>
+    <React.Fragment>
+      <CssBaseline />
+      <Container maxWidth="sm">
+        <Typography component="div" style={{backgroundColor:'#fff',height:'1040px',width:'809px',padding:'44px 59px 0 59px',position:'absolute',top:'86px',left:'calc(50% - 404px)'}} >
 
-          <form name="postPostingForm" className={classes.root} noValidate autoComplete="off">
+        <form name="postPostingForm" className={classes.root} noValidate autoComplete="off">
+        <TextField
+          className="MyPostingHeader"
+          label="标题"
+          placeholder="来为您的帖子命个名吧"
+          multiline
+          rowsMax={1}
+          value={Headervalue}
+          onChange={HeadervaluehandleChange}
+        />
+
+        {/*<FormControl variant="outlined" className={classes.formControl}>
+          <InputLabel id="demo-simple-select-outlined-label">Age</InputLabel>
+          <Select
+            labelId="demo-simple-select-outlined-label"
+            id="demo-simple-select-outlined"
+            value={age}
+            onChange={handleChange}
+            label="Age"
+          >
+             <MenuItem value="">
+              <em>None</em>
+            </MenuItem> 
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
+          </Select>
+        </FormControl>*/}
+
+        <div style={{margin:'20px 0'}}>
           <TextField
-            className="MyPostingHeader"
-            label="标题"
-            placeholder="来为您的帖子命个名吧"
+            id="filled-multiline-static"
+            className="MyPostingText"
+            label="正文"
             multiline
-            rowsMax={1}
-            value={Headervalue}
-            onChange={HeadervaluehandleChange}
+            rows={37}
+            defaultValue="Default Value"
+            variant="outlined"
+            value={Textvalue}
+            onChange={TextvaluehandleChange}  
           />
-
-          {/*<FormControl variant="outlined" className={classes.formControl}>
-            <InputLabel id="demo-simple-select-outlined-label">Age</InputLabel>
-            <Select
-              labelId="demo-simple-select-outlined-label"
-              id="demo-simple-select-outlined"
-              value={age}
-              onChange={handleChange}
-              label="Age"
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem> 
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-            </Select>
-          </FormControl>*/}
-
-            <div style={{margin:'20px 0'}}>
-              <TextField
-                id="filled-multiline-static"
-                className="MyPostingText"
-                label="正文"
-                multiline
-                rows={37}
-                defaultValue="Default Value"
-                variant="outlined"
-                value={Textvalue}
-                onChange={TextvaluehandleChange}  
-              />
-            </div>
-          </form>
-
+        </div>
+        </form>
           <div className="MyPostingMainCloseIcon" onClick={()=>MyPostingMainCloseIcon(props)}><CloseIcon fontSize="small" style={{position:'relative',top:'12px',left:'12.5px',color: 'white'}}/></div>
             <div className="MyPostingMainFinishIcon" onClick={()=>MyPostingMainFinishIcon(props,Headervalue,Textvalue)}>
               <SendIcon fontSize="small" style={{position:'relative',top:'11.5px',left:'13.5px',color: 'white'}}/>
             </div>
-          </Typography>
-        </Container>
-      </React.Fragment>
-      <Switch>
-          <Route exact path="/home/homepage/posting/back">{MyPostingMainCloseBox(props)}</Route>
-          <Route exact path="/home/homepage/posting/finish">{MyPostingMainFinishBox(props)}</Route>
-          <Route exact path="/"></Route>      
-      </Switch>
+        </Typography>
+      </Container>
+    </React.Fragment>
+    <Switch>
+        <Route exact path="/home/homepage/posting/back">{MyPostingMainCloseBox(props)}</Route>
+        <Route exact path="/home/homepage/posting/finish">{MyPostingMainFinishBox(props)}</Route>
+        <Route exact path="/"></Route>      
+    </Switch>
     </div>
-   
   );
 }
 
@@ -268,7 +228,7 @@ export function MyPostingMainFinishBox(props) {
   )
 }
 export function MyPostingMainFinishBoxFinish(props) {
-  props.history.push("/home/homepage");
+  props.history.push("/Home/HomePage");
 }
 
 export function MyPostingMainCloseBoxFinishButtons() {
@@ -281,6 +241,9 @@ export function MyPostingMainCloseBoxFinishButtons() {
 }
 
 export default withRouter(SimpleContainer);
+
+
+
 
 {/* 
 export default function PostingMain() {
