@@ -190,9 +190,13 @@ class RegisterPage extends React.Component {
         console.log(1);
       })
       .catch((error) => {
-        this.props.history.push("/load/register/false"); 
-        console.log(error);   
-        console.log(2);
+        if(error.response.data.msg == "该用户已经注册"){
+          this.props.history.push("/load/register/emailfalse"); 
+        }else if(error.response.data.msg == "验证码错误，请重新输入或者获取"){
+          this.props.history.push("/load/register/codefalse"); 
+        }
+        console.log(error.response.data.msg);   
+        console.log();
       });
     }
   }
@@ -287,7 +291,15 @@ class RegisterPage extends React.Component {
             <div onClick={()=>this.props.history.go(-1)}><a id="RegisterBoxCloseLoadLink"><CloseIcon fontSize="large" style={{position:'absolute', left:'492px', top:'13px'}}/></a></div>
           </div>
       <Switch>
-        <Route exact path="/load/register/false">
+        <Route exact path="/load/register/emailfalse">
+          <div id="BackKeywordBox1" style={{zIndex:"1500"}}>
+            <div id="BackKeywordBox1Header">该用户已经注册</div>
+            <div onClick={() => this.props.history.go(-1) }> 
+              <Loadregisterfalse/>     
+            </div>
+          </div>
+        </Route>
+        <Route exact path="/load/register/codefalse">
           <div id="BackKeywordBox1" style={{zIndex:"1500"}}>
             <div id="BackKeywordBox1Header">验证码错误，请重新注册</div>
             <div onClick={() => this.props.history.go(-1) }> 
