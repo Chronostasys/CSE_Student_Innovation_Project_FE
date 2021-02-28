@@ -14,6 +14,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import TextsmsIcon from '@material-ui/icons/Textsms';
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -26,6 +28,7 @@ import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close';
+import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
 import Button from '@material-ui/core/Button';
 import SendIcon from '@material-ui/icons/Send';
@@ -178,7 +181,7 @@ class SimpleContainer extends React.Component {
             {myhomeSpaceOrganizationProject()}
             {myhomeSpaceOrganizationCompany()}
             {myhomeSpaceOrganizationProject()}
-            {myhomeSpaceOrganizationCreate()}
+            <CreateOrganization />
           </div>
         </div>
       </div>
@@ -208,16 +211,75 @@ export function myhomeSpaceOrganizationCompany(props) {
     </div>
   );
 }
-export function myhomeSpaceOrganizationCreate(props) {
+
+const CreateOrganizationUseStyles = makeStyles((theme) => ({
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff',
+  },
+}));
+
+export function CreateOrganization() {
+  const CreateOrganizationUseStylesclasses = CreateOrganizationUseStyles();
+  const [open, setOpen] = React.useState(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleToggle = () => {
+    setOpen(!open);
+  };
+
   return (
-    <div className="myhomeSpaceOrganizationCreate">
-      <div className="myhomeSpaceOrganizationCreateTextBox">
-        <AddCircleOutlineIcon  style={{fontSize:"28"}}/>
-        <div className="myhomeSpaceOrganizationCreateText">申请加入组织</div>
-      </div>  
+    <div>
+      <div className="myhomeSpaceOrganizationCreate" onClick={handleToggle}>
+        <div className="myhomeSpaceOrganizationCreateTextBox">
+          <AddCircleOutlineIcon  style={{fontSize:"28"}}/>
+          <div className="myhomeSpaceOrganizationCreateText">申请创建组织</div>
+        </div>  
+      </div>
+
+      <Backdrop className={CreateOrganizationUseStylesclasses.backdrop} open={open}>
+        <CreateOrganizationPage />
+        <div className="CreateOrganizationPageBack" onClick={handleClose}><CloseIcon fontSize="large"/></div>
+      </Backdrop>
     </div>
   );
 }
+
+class CreateOrganizationPage extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      RegisterPageStage: 1, 
+      userName: '',
+      userNameJudge: 'T',
+      theEmail: '', 
+
+      };
+  }
+
+  render() {
+
+    return (
+      
+      <div className="CreateOrganizationPage">
+        <div className="CreateOrganizationPageHeader">
+          <GroupAddIcon color="action" style={{fontSize:"34",position:"relative",top:"11px"}}/>
+          <div className="CreateOrganizationPageHeaderText">创建组织</div>
+        </div>
+        <div className="CreateOrganizationPageText1">基本信息</div>
+        <div className="CreateOrganizationPageText2">联系方式</div>
+        <div className="CreateOrganizationPageInputs">
+
+        </div>
+      </div>
+      
+    );
+  }
+}
+
+
 
 export default withRouter(SimpleContainer);
 
