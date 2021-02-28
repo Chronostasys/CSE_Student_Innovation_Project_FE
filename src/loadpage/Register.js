@@ -196,7 +196,7 @@ class RegisterPage extends React.Component {
           this.props.history.push("/load/register/codefalse"); 
         }
         console.log(error.response.data.msg);   
-        console.log();
+        
       });
     }
   }
