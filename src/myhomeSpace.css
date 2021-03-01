@@ -283,7 +283,7 @@ html, body {
   width: 60px;
   height: 22px;
   left: 63px;
-  top: 438px;
+  top: 402px;
   font-family: Microsoft YaHei UI;
   font-style: normal;
   font-weight: normal;
@@ -300,6 +300,33 @@ html, body {
   width: 270px;
   height: 572px;
   left: 167px;
-  top: 97px;
-  background-color: #5C84D2;
+  top: 75px;
+}
+.TextFieldOrganizationName{
+  margin: 0 0 18px 0;
+}
+.CreateOrganizationPageInputsImg{
+  margin: 32px 0 16px 0;
+  height: 125px;
+  width: 250px;
+  border-radius: 4px;
+  background: #C4C4C4;  
+}
+.CreateOrganizationPageInputsImg:hover{
+  cursor: pointer;
+}
+.CreateOrganizationPageInputsImgText{
+  position: absolute;
+  left: 85px;
+  top: 230px;
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 150%;
+  letter-spacing: 0.15px;
+  color: #ffffff;
+}
+.TextFieldOrganizationTextFieldBox{
+  margin: 0 0 18px 0;
 }

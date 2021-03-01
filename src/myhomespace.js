@@ -61,6 +61,7 @@ class SimpleContainer extends React.Component {
   constructor(props) {
     super(props);
     this.NameChangeClick = this.NameChangeClick.bind(this);
+    this.NameChangeCloseClick = this.NameChangeCloseClick.bind(this);
     this.nameHandleChange = this.nameHandleChange.bind(this);
     this.sloganHandleChange = this.sloganHandleChange.bind(this);
 
@@ -83,6 +84,9 @@ class SimpleContainer extends React.Component {
   };
   NameChangeClick() {
     this.setState({NameChangeStage: true});  
+  }
+  NameChangeCloseClick() {
+    this.setState({NameChangeStage: false});  
   }
 
   render() {
@@ -151,11 +155,10 @@ class SimpleContainer extends React.Component {
             </div>
           </form> 
           <div className="myhomeSpaceNameChangeFinishButton"><CheckIcon color="action" style={{fontSize:"20",position:"relative",left:"5px",top:"5px"}}/></div>
-          <div className="myhomeSpaceNameChangeCloseButton"><CloseIcon color="action" style={{fontSize:"20",position:"relative",left:"5px",top:"5px"}}/></div>
+          <div className="myhomeSpaceNameChangeCloseButton" onClick={this.NameChangeCloseClick}><CloseIcon color="action" style={{fontSize:"20",position:"relative",left:"5px",top:"5px"}}/></div>
         </div>
 
-
-    }else{
+    } else {
       myhomeSpaceNameChangeBox =        
       <div className="myhomeSpaceNameBox">
         <div className="myhomeSpaceNameBoxName">Emilee Simchenko</div>
@@ -251,10 +254,6 @@ class CreateOrganizationPage extends React.Component {
     super(props);
 
     this.state = {
-      RegisterPageStage: 1, 
-      userName: '',
-      userNameJudge: 'T',
-      theEmail: '', 
 
       };
   }
@@ -271,13 +270,73 @@ class CreateOrganizationPage extends React.Component {
         <div className="CreateOrganizationPageText1">基本信息</div>
         <div className="CreateOrganizationPageText2">联系方式</div>
         <div className="CreateOrganizationPageInputs">
-
+          <CreateOrganizationPageInputs />
         </div>
       </div>
       
     );
   }
 }
+export function CreateOrganizationPageInputs() {
+
+  const SelectclassesuseStyles = makeStyles((theme) => ({
+    formControl: {
+      margin: theme.spacing(1),
+      minWidth: 195,
+    },
+    selectEmpty: {
+      marginTop: theme.spacing(2),
+    },
+  }));
+    
+  const Selectclasses = SelectclassesuseStyles();
+  const [type, setAge] = React.useState('');
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
+
+  return (
+  <div>        
+    <div className="TextFieldOrganizationName"><TextField label="组织名称"/></div>
+
+    <div className="TextFieldOrganizationTypr" style={{position:"relative",right:"8px",bottom:"5px"}}>
+      <FormControl className={Selectclasses.formControl}>
+        <InputLabel id="demo-simple-select-outlined-label">组织类型</InputLabel>
+        <Select
+          labelId="demo-simple-select-outlined-label"
+          id="demo-simple-select-outlined"
+          value={type}
+          onChange={handleChange}
+          label="组织类型"
+        >
+          <MenuItem value={1}>大创项目</MenuItem>
+          <MenuItem value={2}>校园企业</MenuItem>
+        </Select>
+      </FormControl>
+    </div>
+    <div className="CreateOrganizationPageInputsImg">
+      <AddCircleOutlineIcon style={{fontSize:"26",position:"absolute",left:"105px",top:"200px"}}/>
+      <div className="CreateOrganizationPageInputsImgText">上传首图</div>
+    </div>
+    <div className="TextFieldOrganizationTextFieldBox"><TextField label="邮箱"/></div>
+    <div className="TextFieldOrganizationTextFieldBox"><TextField label="固定电话"/></div>
+    <div className="TextFieldOrganizationTextFieldBox"><TextField label="移动电话"/></div>
+
+    <Button 
+      variant="contained" 
+      startIcon={<CheckIcon />} 
+
+      style={{backgroundColor:"#263B64",color:"white",width:"133px",height:"40px",position:"absolute",top:"520px",left:"205px"}}
+    >
+      创建组织
+    </Button>
+    
+    
+  </div>
+  
+  );
+}
+
 
 
 
