@@ -16,7 +16,7 @@ import axios from 'axios';
 import qs from 'qs';
 
 import MyPosting from './MyPosting';
-import './index.css';
+import './indexpage.css';
 
 import {
   BrowserRouter as Router,

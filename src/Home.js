@@ -24,7 +24,7 @@ import {
 import axios from 'axios';
 import qs from 'qs';
 
-import './index.css';
+import './indexpage.css';
 import FirstPage from './FirstPage';
 import MyPosting from './MyPosting';
 

@@ -12,7 +12,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import TextsmsIcon from '@material-ui/icons/Textsms';
-import './index.css';
+import './indexpage.css';
 import axios from 'axios';
 import qs from 'qs';
 

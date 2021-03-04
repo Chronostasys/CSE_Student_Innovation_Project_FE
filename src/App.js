@@ -19,7 +19,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 
-import './index.css';
+import './indexpage.css';
 import LoadBasicTextFields from './loadpage/LoadBasicTextFields';
 import Home from './Home';
 

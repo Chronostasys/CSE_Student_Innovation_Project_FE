@@ -21,7 +21,7 @@ import Box from '@material-ui/core/Box';
 import { AxiosProvider, Request, Get, Delete, Head, Post, Put, Patch, withAxios } from 'react-axios'
 import axios from 'axios';
 
-import '../index.css';
+import '../indexpage.css';
 import RegisterPage from '../loadpage/Register';
 import ForgeKeyword from '../loadpage/ForgetKeyword';
 import qs from 'qs';
