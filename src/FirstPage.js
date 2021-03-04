@@ -17,7 +17,9 @@ import RegisterPage from './loadpage/Register';
 import axios from 'axios';
 import qs from 'qs';
 
-import myhomespace from './myhomespace';
+import myHomespace from './myhomespace';
+import manageOrganization from './manageOrganization';
+
 import MyPosting from './MyPosting';
 import './indexHomepage.css';
 
@@ -54,7 +56,8 @@ export function firstPageMain(props) {
     <div>
       {GetFirstPage(props)}
       <Switch>
-        <Route exact path="/home/homespace">{myhomespace}</Route>
+        <Route exact path="/home/homespace">{myHomespace}</Route>
+        <Route exact path="/home/manage">{manageOrganization}</Route>
         <Route path="/home/homepage/posting"><MyPosting style={{padding:'0'}}/></Route>
         <Route exact path="/home/homepage/register">
           <RegisterPage />

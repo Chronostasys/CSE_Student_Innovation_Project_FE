@@ -251,7 +251,7 @@ class RegisterPage extends React.Component {
     if (Emailjudge == 'T') {
       TextFieldRegisterBoxEmail = <TextField label="邮箱" onChange={this.onEmailChange}/>
     } else if (Emailjudge == 'F') {
-      TextFieldRegisterBoxEmail = <TextField error id="standard-error-helper-text" label="邮箱" helperText="邮箱已注册或格式不正确" onChange={this.onEmailChange} />      
+      TextFieldRegisterBoxEmail = <TextField error id="standard-error-helper-text" label="邮箱" helperText="邮箱格式不正确或发送失败" onChange={this.onEmailChange} />      
     }
     if (VerificationCodejudge == 'T') {
       TextFieldRegisterBoxVerificationCode = <TextField label="验证码" onChange={this.onVerificationCodeChange}/>

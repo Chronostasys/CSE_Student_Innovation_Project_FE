@@ -1,0 +1,93 @@
+a{
+  text-decoration: none;
+}
+*{
+  margin:0;
+  padding:0;
+}
+html body .MuiBox-root{
+  padding:0;
+}
+
+body {	
+	color:#2D2D2D;
+  overflow-x: hidden;
+}
+html, body {
+  height:100%;
+}
+
+.manageOrganizationBackgroundBlack{
+  margin: 0;
+  width: 100%;
+  background-color: #DCE0E6;
+  border:1px solid #DCE0E6;
+}
+.manageOrganizationBackgroundWhite{
+  position: relative;
+  top: 27px;
+  left: calc(50% - 1047px/2 + 1.5px);
+  min-height: 680px;
+  width: 1047px;
+  background-color: #ffffff;
+  margin-bottom: 50px;
+  overflow:hidden;
+}
+@media screen and (max-width: 1047px) {
+  .manageOrganizationBackgroundWhite{
+    left: 0px;  
+  }  
+}
+.manageOrganizationOrganizationBox{
+  position: absolute;
+  width: 923px;
+  height: 75px;
+  left: 59px;
+  top: 47px;
+  margin: 0 0 50px 0;
+  background-color: bisque;
+
+
+}
+.manageOrganizationOrganizationBoxHeader{
+
+  font-family: Microsoft YaHei UI;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color: #263B64;
+}
+.manageOrganizationOrganizationBoxList{
+  background-color:cadetblue;
+  height: 500px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.CreateOrganizationPage{
+  position: fixed;
+  width: 555px;
+  height:676px;
+  left: calc(50% - 555px/2 + 1.5px);
+  top: 40px;
+  background: #FFFFFF;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+}
+@media screen and (max-width: 555px) {
+  .CreateOrganizationPage{
+    left: 0px;  
+  }  
+}
